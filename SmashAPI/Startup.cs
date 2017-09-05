@@ -41,10 +41,8 @@ namespace SmashAPI
         {
             loggerFactory.AddConsole();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+     
+            app.UseDeveloperExceptionPage();
 
             app.UseStatusCodePages();
 
