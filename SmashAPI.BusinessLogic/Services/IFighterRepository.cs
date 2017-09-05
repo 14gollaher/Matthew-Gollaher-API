@@ -3,8 +3,8 @@ using System.Data;
 
 namespace SmashAPI.BusinessLogic
 {
-    public interface ICharacterRepository
+    public interface IFighterRepository
     {
-        IEnumerable<Character> GetCharacters();
+        IEnumerable<Fighter> GetFighters();
     }
 }

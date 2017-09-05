@@ -32,7 +32,7 @@ namespace SmashAPI
             var connectionString = Configuration["connectionStrings:SmashDBConnectionString"];
             services.AddDbContext<SmashContext>(o => o.UseSqlServer(connectionString));
 
-            services.AddScoped<ICharacterRepository, CharacterRepository>();
+            services.AddScoped<IFighterRepository, FighterRepository>();
         }
 
 

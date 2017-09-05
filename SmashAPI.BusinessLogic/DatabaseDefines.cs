@@ -2,15 +2,15 @@
 {
     public class DatabaseDefines
     {
-        #region Character Stored Procedures
-        public static string Character_GetCharacters = "EXEC dbo.SEL_GetCharacters";
-        public static string Character_UpsertCharacter = "EXEC dbo.UPD_UpsertCharacter";
+        #region Fighter Stored Procedures
+        public static string Fighter_GetFighters = "EXEC dbo.SEL_GetFighters";
+        public static string Fighter_UpsertFighter = "EXEC dbo.UPD_UpsertFighter";
         #endregion
 
-        #region Character Table Columns
-        public static string Character_Id = "Id";
-        public static string Character_Name = "Name";
-        public static string Character_PortraitPicture = "PortraitPicture";
+        #region Fighter Table Columns
+        public static string Fighter_Id = "Id";
+        public static string Fighter_Name = "Name";
+        public static string Fighter_PortraitPicture = "PortraitPictureUrl";
         #endregion
     }
 }

@@ -5,18 +5,18 @@ using System.Linq;
 
 namespace SmashAPI.BusinessLogic
 {
-    public class CharacterRepository : ICharacterRepository
+    public class FighterRepository : IFighterRepository
     {
         private SmashContext _context;
 
-        public CharacterRepository(SmashContext context)
+        public FighterRepository(SmashContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<Character> GetCharacters()
+        public IEnumerable<Fighter> GetFighters()
         {
-            return _context.Characters.FromSql(DatabaseDefines.Character_GetCharacters).ToList();
+            return _context.Fighters.FromSql(DatabaseDefines.Fighter_GetFighters).ToList();
         }
     }
 }

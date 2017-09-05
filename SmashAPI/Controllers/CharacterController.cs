@@ -3,21 +3,21 @@ using SmashAPI.BusinessLogic;
 
 namespace SmashAPI
 {
-    [Route("/characters")]
-    public class CharacterController : Controller
+    [Route("/Fighters")]
+    public class FighterController : Controller
     {
-        private ICharacterRepository _characterRepository;
+        private IFighterRepository _FighterRepository;
 
-        public CharacterController(ICharacterRepository characterRepository)
+        public FighterController(IFighterRepository FighterRepository)
         {
-            _characterRepository = characterRepository;
+            _FighterRepository = FighterRepository;
         }
 
         [HttpGet()]
-        public IActionResult GetCharacters()
+        public IActionResult GetFighters()
         {
-            var characterEvents = _characterRepository.GetCharacters();
-            return Ok(characterEvents);
+            var FighterEvents = _FighterRepository.GetFighters();
+            return Ok(FighterEvents);
         }
     }
 }

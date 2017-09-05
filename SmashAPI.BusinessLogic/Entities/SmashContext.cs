@@ -9,6 +9,6 @@ namespace SmashAPI.BusinessLogic
             Database.Migrate();
         }
 
-        public DbSet<Character> Characters { get; set; }
+        public DbSet<Fighter> Fighters { get; set; }
     }
 }
