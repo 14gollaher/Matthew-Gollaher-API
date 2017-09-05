@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace SmashAPI.DTO
+namespace SmashAPI.BusinessLogic
 {
     public class Abilities
     {
@@ -11,8 +8,5 @@ namespace SmashAPI.DTO
         public List<Grab> Grabs { get; set; }
         public List<Throw> Throws { get; set; }
         public List<Roll> Rolls { get; set; }
-
-
-
     }
 }

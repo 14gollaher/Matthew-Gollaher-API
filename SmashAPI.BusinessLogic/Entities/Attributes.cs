@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace SmashAPI
+﻿namespace SmashAPI.BusinessLogic
 {
     public class Attributes
     {

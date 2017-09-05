@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SmashAPI
+namespace SmashAPI.BusinessLogic
 {
     public class Attack : Move
     {
