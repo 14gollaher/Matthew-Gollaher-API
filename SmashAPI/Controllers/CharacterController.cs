@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SmashAPI.BusinessLogic;
 
 namespace SmashAPI
 {
-    [Route("[controller]")]
+    [Route("/characters")]
     public class CharacterController : Controller
     {
         private ICharacterRepository _characterRepository;
@@ -15,27 +14,10 @@ namespace SmashAPI
         }
 
         [HttpGet()]
-        public IActionResult Get()
+        public IActionResult GetCharacters()
         {
             var characterEvents = _characterRepository.GetCharacters();
             return Ok(characterEvents);
-        }
-
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
-
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-
         }
     }
 }
