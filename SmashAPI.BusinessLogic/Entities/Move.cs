@@ -15,7 +15,6 @@ namespace SmashAPI.BusinessLogic
     public class Grab : Move
     {
         public string HitboxActiveRange { get; set; }
-
         public int FirstActionableFrame { get; set; }
     }
 
@@ -53,6 +52,6 @@ namespace SmashAPI.BusinessLogic
     public class Move
     {
         public string Name { get; set; }
-        public List<byte[]> AttackFrames { get; set; }
+        public List<string> AttackFramePictureUrls { get; set; }
     }
 }
