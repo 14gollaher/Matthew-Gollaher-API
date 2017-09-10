@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
-namespace SmashAPI.BusinessLogic
+namespace WiiUSmash4.BusinessLogic
 {
     public class FighterRepository : IFighterRepository
     {
@@ -14,9 +13,29 @@ namespace SmashAPI.BusinessLogic
             _context = context;
         }
 
+        public void InsertFighter(Fighter fighter)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<Fighter> GetFighters()
         {
             return _context.Fighters.FromSql(DatabaseDefines.Fighter_GetFighters).ToList();
+        }
+
+        public Fighter GetFighter(int fighterId)
+        {
+            return _context.Fighter.FromSql(DatabaseDefines.Fighter_GetFighter).Single();
+        }
+
+        public void UpdateFighter(Fighter fighter)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DeleteFighter(int fighterId)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

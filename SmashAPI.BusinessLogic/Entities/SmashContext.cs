@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace SmashAPI.BusinessLogic
+namespace WiiUSmash4.BusinessLogic
 {
     public class SmashContext : DbContext
     {
@@ -10,5 +10,6 @@ namespace SmashAPI.BusinessLogic
         }
 
         public DbSet<Fighter> Fighters { get; set; }
+        public DbSet<Fighter> Fighter { get; set; }
     }
 }

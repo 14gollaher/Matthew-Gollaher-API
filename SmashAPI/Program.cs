@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using System.IO;
 
-namespace SmashAPI
+namespace WiiUSmash4
 {
     public class Program
     {

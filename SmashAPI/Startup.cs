@@ -5,9 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SmashAPI.BusinessLogic;
+using System;
+using WiiUSmash4.BusinessLogic;
 
-namespace SmashAPI
+namespace WiiUSmash4
 {
     public class Startup
     {
@@ -22,25 +23,28 @@ namespace SmashAPI
             Configuration = builder.Build();
         }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddMvcOptions(o => o.OutputFormatters.Add(
-                    new XmlDataContractSerializerOutputFormatter()));
+            services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-            var connectionString = Configuration["connectionStrings:SmashDBConnectionString"];
+            string connectionString = Configuration["connectionStrings:SmashDBConnectionString"];
             services.AddDbContext<SmashContext>(o => o.UseSqlServer(connectionString));
 
-            services.AddScoped<IFighterRepository, FighterRepository>();
+            bool mockData = Convert.ToBoolean(Configuration["configuration:mock"]);
+
+            if (mockData)
+            {
+                services.AddScoped<IFighterRepository, MockFighterRepository>();
+            }
+            else
+            {
+                services.AddScoped<IFighterRepository, FighterRepository>();
+            }
         }
 
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-
      
             app.UseDeveloperExceptionPage();
 

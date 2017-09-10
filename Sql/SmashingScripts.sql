@@ -112,10 +112,10 @@ INSERT INTO AttackFramePicture
 VALUES ('None')
 
 INSERT INTO Move 
-VALUES('Jab 1', 1)
+VALUES('Jab 1', 2)
 
 INSERT INTO Attack
-VALUES('3-4', 20, 2, 361, 8, 50, 
+VALUES('3-4', 20, 2, 361, 8, 50)
 
 --Id INT IDENTITY(1, 1) PRIMARY KEY FOREIGN KEY REFERENCES Move(Id),
 --	HitboxActiveRange VARCHAR(50) NOT NULL,
@@ -127,4 +127,13 @@ VALUES('3-4', 20, 2, 361, 8, 50,
 --	LandingLag INT NOT NULL,
 --	AutoCancelFrames VARCHAR(50) 
 
+UPDATE Move
+SET Name = 'Jab 2'
+WHERE Id = 2
+
 SELECT * FROM Move
+SELECT * FROM Attack
+
+SELECT M.ID, M.Name, M.AttackFramePictureId, A.HitboxActiveRange, A.FirstActionableFrame, A.BaseDamage, A.Angle, A.BaseKnockBack, A.KnockBackGrowth
+FROM Move AS M
+JOIN ATTACK AS A ON M.AttackFramePictureId = A.Id
