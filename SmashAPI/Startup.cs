@@ -27,9 +27,6 @@ namespace WiiUSmash4
         {
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-            string connectionString = Configuration["connectionStrings:SmashDBConnectionString"];
-            services.AddDbContext<SmashContext>(o => o.UseSqlServer(connectionString));
-
             bool mockData = Convert.ToBoolean(Configuration["configuration:mock"]);
 
             if (mockData)

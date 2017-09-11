@@ -5,7 +5,7 @@ namespace WiiUSmash4.BusinessLogic
 {
     public class MockFighterRepository : IFighterRepository
     {
-        void IFighterRepository.InsertFighter(Fighter fighter)
+        int IFighterRepository.InsertFighter(Fighter fighter)
         {
             throw new NotImplementedException();
         }
@@ -34,16 +34,16 @@ namespace WiiUSmash4.BusinessLogic
                 FastFallSpeedRank = 19,
                 AirAcceleration = 15.5,
                 Gravity = 0.77,
-                ShortHopAirTime = 1.2,
-                LongHopAirTime = 1.7,
+                ShortHopAirTimeFrames = 5,
+                FullHopAirTimeFrames = 7,
                 MaximumJumps = 4,
                 WallJump = false,
                 WallCling = true,
                 Crawl = true,
                 Tether = false,
-                JumpSquatFrameCount = 4,
-                SoftLandingLag = 3,
-                HardLandingLag = 4
+                JumpSquatFrames = 4,
+                SoftLandingLagFrames = 3,
+                HardLandingLagFrames = 4
             };
             fighter.Attributes = attributes;
 
@@ -95,7 +95,6 @@ namespace WiiUSmash4.BusinessLogic
                 ShieldDamage = "11",
                 Angle = "45",
                 BaseKnockBack = "45",
-                WeightBaseKnockBack = null,
                 KnockBackGrowth = "47"
             };
             fighter.Throws = new List<Throw>(new Throw[] { throw1 });
@@ -154,6 +153,11 @@ namespace WiiUSmash4.BusinessLogic
             throw new NotImplementedException();
         }
         void IFighterRepository.DeleteFighter(int fighterId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertFighter(Fighter fighter)
         {
             throw new NotImplementedException();
         }

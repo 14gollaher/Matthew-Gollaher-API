@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WiiUSmash4.BusinessLogic
 {
@@ -27,7 +28,6 @@ namespace WiiUSmash4.BusinessLogic
         public string ShieldDamage { get; set; }
         public string Angle { get; set; }
         public string BaseKnockBack { get; set; }
-        public string WeightBaseKnockBack { get; set; }
         public string KnockBackGrowth { get; set; }
     }
 
@@ -66,32 +66,7 @@ namespace WiiUSmash4.BusinessLogic
     public class Move
     {
         public string Name { get; set; }
+        [NotMapped]
         public List<string> AbilityFramePictureUrls { get; set; }
     }
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

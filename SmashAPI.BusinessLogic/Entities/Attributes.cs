@@ -16,15 +16,15 @@
         public int FastFallSpeedRank { get; set; }
         public double AirAcceleration { get; set; }
         public double Gravity { get; set; }
-        public double ShortHopAirTime { get; set; }
-        public double LongHopAirTime { get; set; }
+        public int ShortHopAirTimeFrames { get; set; }
+        public int FullHopAirTimeFrames { get; set; }
         public int MaximumJumps { get; set; }
         public bool WallJump { get; set; }
         public bool WallCling { get; set; }
         public bool Crawl { get; set; }
         public bool Tether { get; set; }
-        public int JumpSquatFrameCount { get; set; }
-        public int SoftLandingLag { get; set; }
-        public int HardLandingLag { get; set; }
+        public int JumpSquatFrames { get; set; }
+        public int SoftLandingLagFrames { get; set; }
+        public int HardLandingLagFrames { get; set; }
     }
 }
