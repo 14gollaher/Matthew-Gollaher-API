@@ -6,14 +6,21 @@
 
         #region Stored Procedures
         public static string InsertFighter = "dbo.Fighter_INS";
+        public static string InsertAbilityFramePicture = "dbo.AbilityFramePicture_INS";
+        public static string InsertAerial = "dbo.Aerial_INS";
+        public static string InsertAttack = "dbo.Attack_INS";
         public static string InsertAttributes = "dbo.Attributes_INS";
-        public static string InsertAriel = "dbo.Attributes_INS";
+        public static string InsertGrab = "dbo.Grab_INS";
+        public static string InsertRoll = "dbo.Roll_INS";
+        public static string InsertSpecial = "dbo.Special_INS";
+        public static string InsertThrow = "dbo.Throw_INS";
+
         public static string GetFighters = "dbo.Fighters_SEL";
         public static string GetFighter = "dbo.Fighter_SEL";
         #endregion
 
         #region Ability Frame Picture Table
-        public static string AbilityFramePicture_TableType = "AbilityFramePictureType";
+        public static string AbilityFramePicture_TableType = "AbilityFramePictureTable";
         public static string AbilityFramePicture_PictureUrl = "PictureUrl";
         #endregion 
 
@@ -29,7 +36,6 @@
         public static string Aerial_KnockBackGrowth = "KnockBackGrowth";
         public static string Aerial_LandingLag = "LandingLag";
         public static string Aerial_AutoCancelFrames = "AutoCancelFrames";
-        public static string Aerial_FighterId = "Fighter_FighterId";
         #endregion
 
         #region Attack Table
@@ -43,7 +49,6 @@
         public static string Attack_BaseKnockBack = "BaseKnockBack";
         public static string Attack_WeightBaseKnockBack = "WeightBaseKnockBack";
         public static string Attack_KnockBackGrowth = "KnockBackGrowth";
-        public static string Attack_FighterId = "Fighter_FighterId";
         #endregion
 
         #region Attributes Table
@@ -62,6 +67,7 @@
         public static string Attributes_Gravity = "Gravity";
         public static string Attributes_ShortHopAirTimeFrames = "ShortHopAirTimeFrames";
         public static string Attributes_FastFallSpeed = "FastFallSpeed";
+        public static string Attributes_FastFallSpeedRank = "FastFallSpeedRank";
         public static string Attributes_MaximumJumps = "MaximumJumps";
         public static string Attributes_WallJump = "WallJump";
         public static string Attributes_WallCling = "WallCling";
@@ -71,10 +77,10 @@
         public static string Attributes_SoftLandingLagFrames = "SoftLandingLagFrames";
         public static string Attributes_HardLandingLagFrames = "HardLandingLagFrames";
         public static string Attributes_FullHopAirTimeFrames = "FullHopAirTimeFrames";
-        public static string Attibutes_FighterId = "FighterId";
         #endregion
 
-        #region Fighter Table 
+        #region Fighter 
+        public static string Fighter_Id = "Fighter_Id";
         public static string Fighter_TableType = "FighterTable";
         public static string Fighter_Name = "Name";
         public static string Fighter_Title = "Title";
@@ -86,7 +92,6 @@
         public static string Grab_Name = "Name";
         public static string Grab_HitBoxActiveRange = "HitBoxActiveRange";
         public static string Grab_FirstActionableFrame = "FirstActionableFrame";
-        public static string Grab_FighterId = "FighterId";
         #endregion
 
         #region Roll Table
@@ -94,7 +99,6 @@
         public static string Roll_Name = "Name";
         public static string Roll_Intangibility = "Intangibility";
         public static string Roll_FirstActionableFrame = "FirstActionableFrame";
-        public static string Roll_FighterId = "FighterId";
         #endregion
 
         #region Special Table
@@ -108,7 +112,6 @@
         public static string Special_BaseKnockBack = "BaseKnockBack";
         public static string Special_WeightBaseKnockBack = "WeightBaseKnockBack";
         public static string Special_KnockBackGrowth = "KnockBackGrowth";
-        public static string Special_FighterId = "FighterId";
         #endregion
 
         #region Throw Table
@@ -119,7 +122,6 @@
         public static string Throw_BaseKnockBack = "BaseKnockBack";
         public static string Throw_WeightBaseKnockBack = "WeightBaseKnockBack";
         public static string Throw_KnockBackGrowth = "KnockBackGrowth";
-        public static string Throw_FighterId = "FighterId";
         #endregion
 
     }

@@ -35,7 +35,7 @@ namespace WiiUSmash4
             }
             else
             {
-                //services.AddScoped<IFighterRepository, FighterRepository>();
+                services.AddScoped<IFighterRepository, FighterRepository>();
             }
         }
 

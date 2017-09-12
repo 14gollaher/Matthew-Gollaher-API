@@ -5,11 +5,11 @@ namespace WiiUSmash4.BusinessLogic
 {
     public class MockFighterRepository : IFighterRepository
     {
-        int IFighterRepository.InsertFighter(Fighter fighter)
+        public void InsertFighter(Fighter fighter)
         {
             throw new NotImplementedException();
         }
-        Fighter IFighterRepository.GetFighter(int fighterId)
+        public Fighter GetFighter(int fighterId)
         {
             Fighter fighter = new Fighter
             {
@@ -22,6 +22,7 @@ namespace WiiUSmash4.BusinessLogic
             Attributes attributes = new Attributes
             {
                 Weight = 125.5,
+                WeightRank = 30,
                 RunSpeed = 20.2,
                 RunSpeedRank = 5,
                 WalkSpeed = 20.0,
@@ -153,11 +154,6 @@ namespace WiiUSmash4.BusinessLogic
             throw new NotImplementedException();
         }
         void IFighterRepository.DeleteFighter(int fighterId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int InsertFighter(Fighter fighter)
         {
             throw new NotImplementedException();
         }
