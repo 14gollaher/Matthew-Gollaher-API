@@ -211,7 +211,7 @@ namespace WiiUSmash4.BusinessLogic
             DataTable table = new DataTable();
             table.Columns.Add(new DataColumn(DatabaseDefines.Throw_Name));
             table.Columns.Add(new DataColumn(DatabaseDefines.Throw_BaseDamage));
-            //table.Columns.Add(new DataColumn(DatabaseDefines.Throw_ShieldDamage)); TODO
+            table.Columns.Add(new DataColumn(DatabaseDefines.Throw_ShieldDamage)); 
             table.Columns.Add(new DataColumn(DatabaseDefines.Throw_Angle));
             table.Columns.Add(new DataColumn(DatabaseDefines.Throw_BaseKnockBack));
             table.Columns.Add(new DataColumn(DatabaseDefines.Throw_KnockBackGrowth));
@@ -220,7 +220,7 @@ namespace WiiUSmash4.BusinessLogic
             DataRow row = table.NewRow();
             row[DatabaseDefines.Throw_Name] = throwAbility.Name;
             row[DatabaseDefines.Throw_BaseDamage] = throwAbility.BaseDamage;
-            //row[DatabaseDefines.Throw_ShieldDamage] = throwAbility.ShieldDamage; TODO
+            row[DatabaseDefines.Throw_ShieldDamage] = throwAbility.ShieldDamage; 
             row[DatabaseDefines.Throw_Angle] = throwAbility.Angle;
             row[DatabaseDefines.Throw_BaseKnockBack] = throwAbility.BaseKnockBack;
             row[DatabaseDefines.Throw_KnockBackGrowth] = throwAbility.KnockBackGrowth;

@@ -68,11 +68,6 @@ namespace WiiUSmash4.BusinessLogic
                 };
                 aerials.Add(aerial);
             }
-
-            foreach (Aerial item in aerials)
-            {
-
-            }
             return aerials;
         }
 
@@ -209,7 +204,7 @@ namespace WiiUSmash4.BusinessLogic
                 {
                     Name = Convert.ToString(row[DatabaseDefines.Throw_Name]),
                     BaseDamage = Convert.ToString(row[DatabaseDefines.Throw_BaseDamage]),
-                    //ShieldDamage = Convert.ToString(row[DatabaseDefines.Throw_ShieldDamage]), TODO
+                    ShieldDamage = Convert.ToString(row[DatabaseDefines.Throw_ShieldDamage]), 
                     Angle = Convert.ToString(row[DatabaseDefines.Throw_Angle]),
                     BaseKnockBack = Convert.ToString(row[DatabaseDefines.Aerial_BaseKnockBack]),
                     KnockBackGrowth = Convert.ToString(row[DatabaseDefines.Aerial_KnockBackGrowth]),

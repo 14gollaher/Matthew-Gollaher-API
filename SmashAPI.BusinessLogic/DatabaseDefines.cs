@@ -68,7 +68,7 @@
         public static string Attributes_FallSpeed = "FallSpeed";
         public static string Attributes_FallSpeedRank = "FallSpeedRank";
         public static string Attributes_AirAcceleration = "AirAcceleration";
-        public static string Attributes_Gravity = "Gavity"; // TODO: ME
+        public static string Attributes_Gravity = "Gravity"; 
         public static string Attributes_ShortHopAirTimeFrames = "ShortHopAirTimeFrames";
         public static string Attributes_FastFallSpeed = "FastFallSpeed";
         public static string Attributes_FastFallSpeedRank = "FastFallSpeedRank";
@@ -80,7 +80,7 @@
         public static string Attributes_JumpSquatFrames = "JumpSquatFrames";
         public static string Attributes_SoftLandingLagFrames = "SoftLandingLagFrames";
         public static string Attributes_HardLandingLagFrames = "HardLandingLagFrames";
-        public static string Attributes_FullHopAirTimeFrames = "FullHopAirTime"; // TODO: ME
+        public static string Attributes_FullHopAirTimeFrames = "FullHopAirTimeFrames"; 
         #endregion
 
         #region Fighter 
