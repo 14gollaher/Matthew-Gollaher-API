@@ -66,7 +66,6 @@ namespace WiiUSmash4.BusinessLogic
     public class Move
     {
         public string Name { get; set; }
-        [NotMapped]
         public List<string> AbilityFramePictureUrls { get; set; }
     }
 }

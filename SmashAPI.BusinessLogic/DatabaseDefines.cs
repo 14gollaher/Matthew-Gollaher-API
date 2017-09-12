@@ -17,11 +17,15 @@
 
         public static string GetFighters = "dbo.Fighters_SEL";
         public static string GetFighter = "dbo.Fighter_SEL";
+        public static string GetAbilityFrameUrls = "dbo.AbilityFramePicture_SEL";
+        public static string GetFighterIds = "dbo.FighterId_SEL";
         #endregion
 
         #region Ability Frame Picture Table
         public static string AbilityFramePicture_TableType = "AbilityFramePictureTable";
+        public static string AbilityFramePicture_AbilityName = "Name";
         public static string AbilityFramePicture_PictureUrl = "PictureUrl";
+
         #endregion 
 
         #region Aerial Table
@@ -39,7 +43,7 @@
         #endregion
 
         #region Attack Table
-        public static string Attack_TableType = "AttackTableType";
+        public static string Attack_TableType = "AttackTable";
         public static string Attack_Name = "Name";
         public static string Attack_HitboxActiveRange = "HitboxActiveRange";
         public static string Attack_FirstActionableFrame = "FirstActionableFrame";
@@ -64,7 +68,7 @@
         public static string Attributes_FallSpeed = "FallSpeed";
         public static string Attributes_FallSpeedRank = "FallSpeedRank";
         public static string Attributes_AirAcceleration = "AirAcceleration";
-        public static string Attributes_Gravity = "Gravity";
+        public static string Attributes_Gravity = "Gavity"; // TODO: ME
         public static string Attributes_ShortHopAirTimeFrames = "ShortHopAirTimeFrames";
         public static string Attributes_FastFallSpeed = "FastFallSpeed";
         public static string Attributes_FastFallSpeedRank = "FastFallSpeedRank";
@@ -76,11 +80,11 @@
         public static string Attributes_JumpSquatFrames = "JumpSquatFrames";
         public static string Attributes_SoftLandingLagFrames = "SoftLandingLagFrames";
         public static string Attributes_HardLandingLagFrames = "HardLandingLagFrames";
-        public static string Attributes_FullHopAirTimeFrames = "FullHopAirTimeFrames";
+        public static string Attributes_FullHopAirTimeFrames = "FullHopAirTime"; // TODO: ME
         #endregion
 
         #region Fighter 
-        public static string Fighter_Id = "Fighter_Id";
+        public static string Fighter_Id = "FighterId";
         public static string Fighter_TableType = "FighterTable";
         public static string Fighter_Name = "Name";
         public static string Fighter_Title = "Title";
@@ -118,6 +122,7 @@
         public static string Throw_TableType = "ThrowTable";
         public static string Throw_Name = "Name";
         public static string Throw_BaseDamage = "BaseDamage";
+        public static string Throw_ShieldDamage = "ShieldDamage";
         public static string Throw_Angle = "Angle";
         public static string Throw_BaseKnockBack = "BaseKnockBack";
         public static string Throw_WeightBaseKnockBack = "WeightBaseKnockBack";

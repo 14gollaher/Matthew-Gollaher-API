@@ -92,7 +92,7 @@ namespace WiiUSmash4.BusinessLogic
                 Name = "F-Throw",
                 AbilityFramePictureUrls = new List<string>(new string[] { "http://www.sampleUrl5", "http://www.sampleUrl6", "http://www.sampleUrl7" }),
                 WeightDependent = true,
-                BaseDamage = "11",
+                BaseDamage = "11/12",
                 ShieldDamage = "11",
                 Angle = "45",
                 BaseKnockBack = "45",
