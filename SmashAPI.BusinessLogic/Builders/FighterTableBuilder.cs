@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace WiiUSmash4.BusinessLogic
 {
@@ -234,12 +233,12 @@ namespace WiiUSmash4.BusinessLogic
             DataTable table = new DataTable();
             table.Columns.Add(new DataColumn(DatabaseDefines.AbilityFramePicture_PictureUrl));
 
-            foreach (string item in abilityFramePictureUrls)
+            Parallel.ForEach(abilityFramePictureUrls, item =>
             {
                 DataRow row = table.NewRow();
                 row[DatabaseDefines.AbilityFramePicture_PictureUrl] = item;
                 table.Rows.Add(row);
-            }
+            });
 
             return table;
         }

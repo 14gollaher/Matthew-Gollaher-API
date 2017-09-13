@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace WiiUSmash4.BusinessLogic
 {
@@ -25,12 +26,11 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<string> urls = new List<string>();
 
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
-                String url = Convert.ToString(row[DatabaseDefines.AbilityFramePicture_PictureUrl]);
+                String url = Convert.ToString(item[DatabaseDefines.AbilityFramePicture_PictureUrl]);
                 urls.Add(url);
-            }
-
+            });
             return urls;
         }
 
@@ -38,12 +38,12 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<int> fighterIds = new List<int>();
 
-            foreach (DataRow row in table.Rows)
-            {
-                int id = Convert.ToInt32(row[DatabaseDefines.Fighter_Id]);
-                fighterIds.Add(id);
-            }
 
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
+            {
+                int id = Convert.ToInt32(item[DatabaseDefines.Fighter_Id]);
+                fighterIds.Add(id);
+            });
             return fighterIds;
         }
 
@@ -51,23 +51,23 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<Aerial> aerials = new List<Aerial>();
 
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
                 Aerial aerial = new Aerial
                 {
-                    Name = Convert.ToString(row[DatabaseDefines.Aerial_Name]),
-                    HitboxActiveRange = Convert.ToString(row[DatabaseDefines.Aerial_HitboxActiveRange]),
-                    BaseDamage = Convert.ToString(row[DatabaseDefines.Aerial_BaseDamage]),
-                    ShieldDamage = Convert.ToString(row[DatabaseDefines.Aerial_ShieldDamage]),
-                    Angle = Convert.ToString(row[DatabaseDefines.Aerial_Angle]),
-                    BaseKnockBack = Convert.ToString(row[DatabaseDefines.Aerial_BaseKnockBack]),
-                    WeightBaseKnockBack = Convert.ToString(row[DatabaseDefines.Aerial_WeightBaseKnockBack]),
-                    KnockBackGrowth = Convert.ToString(row[DatabaseDefines.Aerial_KnockBackGrowth]),
-                    LandingLag = Convert.ToString(row[DatabaseDefines.Aerial_LandingLag]),
-                    AutoCancelFrames = Convert.ToString(row[DatabaseDefines.Aerial_AutoCancelFrames])
+                    Name = Convert.ToString(item[DatabaseDefines.Aerial_Name]),
+                    HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Aerial_HitboxActiveRange]),
+                    BaseDamage = Convert.ToString(item[DatabaseDefines.Aerial_BaseDamage]),
+                    ShieldDamage = Convert.ToString(item[DatabaseDefines.Aerial_ShieldDamage]),
+                    Angle = Convert.ToString(item[DatabaseDefines.Aerial_Angle]),
+                    BaseKnockBack = Convert.ToString(item[DatabaseDefines.Aerial_BaseKnockBack]),
+                    WeightBaseKnockBack = Convert.ToString(item[DatabaseDefines.Aerial_WeightBaseKnockBack]),
+                    KnockBackGrowth = Convert.ToString(item[DatabaseDefines.Aerial_KnockBackGrowth]),
+                    LandingLag = Convert.ToString(item[DatabaseDefines.Aerial_LandingLag]),
+                    AutoCancelFrames = Convert.ToString(item[DatabaseDefines.Aerial_AutoCancelFrames])
                 };
                 aerials.Add(aerial);
-            }
+            });
             return aerials;
         }
 
@@ -75,22 +75,22 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<Attack> attacks = new List<Attack>();
 
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
                 Attack attack = new Attack
                 {
-                    Name = Convert.ToString(row[DatabaseDefines.Attack_Name]),
-                    HitboxActiveRange = Convert.ToString(row[DatabaseDefines.Attack_HitboxActiveRange]),
-                    FirstActionableFrame = Convert.ToInt32(row[DatabaseDefines.Attack_FirstActionableFrame]),
-                    BaseDamage = Convert.ToString(row[DatabaseDefines.Attack_BaseDamage]),
-                    ShieldDamage = Convert.ToString(row[DatabaseDefines.Attack_ShieldDamage]),
-                    Angle = Convert.ToString(row[DatabaseDefines.Attack_Angle]),
-                    BaseKnockBack = Convert.ToString(row[DatabaseDefines.Attack_BaseKnockBack]),
-                    WeightBaseKnockBack = Convert.ToString(row[DatabaseDefines.Attack_WeightBaseKnockBack]),
-                    KnockBackGrowth = Convert.ToString(row[DatabaseDefines.Attack_KnockBackGrowth])
+                    Name = Convert.ToString(item[DatabaseDefines.Attack_Name]),
+                    HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Attack_HitboxActiveRange]),
+                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Attack_FirstActionableFrame]),
+                    BaseDamage = Convert.ToString(item[DatabaseDefines.Attack_BaseDamage]),
+                    ShieldDamage = Convert.ToString(item[DatabaseDefines.Attack_ShieldDamage]),
+                    Angle = Convert.ToString(item[DatabaseDefines.Attack_Angle]),
+                    BaseKnockBack = Convert.ToString(item[DatabaseDefines.Attack_BaseKnockBack]),
+                    WeightBaseKnockBack = Convert.ToString(item[DatabaseDefines.Attack_WeightBaseKnockBack]),
+                    KnockBackGrowth = Convert.ToString(item[DatabaseDefines.Attack_KnockBackGrowth])
                 };
                 attacks.Add(attack);
-            }
+            });
             return attacks;
         }
 
@@ -144,32 +144,32 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<Grab> grabs = new List<Grab>();
 
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
                 Grab grab = new Grab
                 {
-                    Name = Convert.ToString(row[DatabaseDefines.Grab_Name]),
-                    HitboxActiveRange = Convert.ToString(row[DatabaseDefines.Grab_HitBoxActiveRange]),
-                    FirstActionableFrame = Convert.ToInt32(row[DatabaseDefines.Special_FirstActionableFrame]),
+                    Name = Convert.ToString(item[DatabaseDefines.Grab_Name]),
+                    HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Grab_HitBoxActiveRange]),
+                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Special_FirstActionableFrame]),
                 };
                 grabs.Add(grab);
-            }
+            });
             return grabs;
         }
 
         private static List<Roll> BuildRolls(DataTable table)
         {
             List<Roll> rolls = new List<Roll>();
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
                 Roll roll = new Roll()
                 {
-                    Name = Convert.ToString(row[DatabaseDefines.Roll_Name]),
-                    Intangibility = Convert.ToString(row[DatabaseDefines.Roll_Intangibility]),
-                    FirstActionableFrame = Convert.ToInt32(row[DatabaseDefines.Roll_FirstActionableFrame]),
+                    Name = Convert.ToString(item[DatabaseDefines.Roll_Name]),
+                    Intangibility = Convert.ToString(item[DatabaseDefines.Roll_Intangibility]),
+                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Roll_FirstActionableFrame]),
                 };
                 rolls.Add(roll);
-            }
+            });
             return rolls;
         }
 
@@ -177,40 +177,40 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<Special> specials = new List<Special>();
 
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
                 Special special = new Special
                 {
-                    Name = Convert.ToString(row[DatabaseDefines.Special_Name]),
-                    HitboxActiveRange = Convert.ToString(row[DatabaseDefines.Special_HitboxActiveRange]),
-                    FirstActionableFrame = Convert.ToInt32(row[DatabaseDefines.Special_FirstActionableFrame]),
-                    BaseDamage = Convert.ToString(row[DatabaseDefines.Special_BaseDamage]),
-                    ShieldDamage = Convert.ToString(row[DatabaseDefines.Special_ShieldDamage]),
-                    Angle = Convert.ToString(row[DatabaseDefines.Special_Angle]),
-                    BaseKnockBack = Convert.ToString(row[DatabaseDefines.Special_BaseKnockBack]),
-                    WeightBaseKnockBack = Convert.ToString(row[DatabaseDefines.Special_WeightBaseKnockBack]),
-                    KnockBackGrowth = Convert.ToString(row[DatabaseDefines.Special_KnockBackGrowth])
+                    Name = Convert.ToString(item[DatabaseDefines.Special_Name]),
+                    HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Special_HitboxActiveRange]),
+                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Special_FirstActionableFrame]),
+                    BaseDamage = Convert.ToString(item[DatabaseDefines.Special_BaseDamage]),
+                    ShieldDamage = Convert.ToString(item[DatabaseDefines.Special_ShieldDamage]),
+                    Angle = Convert.ToString(item[DatabaseDefines.Special_Angle]),
+                    BaseKnockBack = Convert.ToString(item[DatabaseDefines.Special_BaseKnockBack]),
+                    WeightBaseKnockBack = Convert.ToString(item[DatabaseDefines.Special_WeightBaseKnockBack]),
+                    KnockBackGrowth = Convert.ToString(item[DatabaseDefines.Special_KnockBackGrowth])
                 };
                 specials.Add(special);
-            }
+            });
             return specials;
         }
         private static List<Throw> BuildThrows(DataTable table)
         {
             List<Throw> throws = new List<Throw>();
-            foreach (DataRow row in table.Rows)
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
             {
                 Throw throwAbility = new Throw()
                 {
-                    Name = Convert.ToString(row[DatabaseDefines.Throw_Name]),
-                    BaseDamage = Convert.ToString(row[DatabaseDefines.Throw_BaseDamage]),
-                    ShieldDamage = Convert.ToString(row[DatabaseDefines.Throw_ShieldDamage]), 
-                    Angle = Convert.ToString(row[DatabaseDefines.Throw_Angle]),
-                    BaseKnockBack = Convert.ToString(row[DatabaseDefines.Aerial_BaseKnockBack]),
-                    KnockBackGrowth = Convert.ToString(row[DatabaseDefines.Aerial_KnockBackGrowth]),
+                    Name = Convert.ToString(item[DatabaseDefines.Throw_Name]),
+                    BaseDamage = Convert.ToString(item[DatabaseDefines.Throw_BaseDamage]),
+                    ShieldDamage = Convert.ToString(item[DatabaseDefines.Throw_ShieldDamage]),
+                    Angle = Convert.ToString(item[DatabaseDefines.Throw_Angle]),
+                    BaseKnockBack = Convert.ToString(item[DatabaseDefines.Aerial_BaseKnockBack]),
+                    KnockBackGrowth = Convert.ToString(item[DatabaseDefines.Aerial_KnockBackGrowth]),
                 };
                 throws.Add(throwAbility);
-            }
+            });
             return throws;
         }
     }
