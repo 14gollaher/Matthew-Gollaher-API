@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WiiUSmash4.BusinessLogic
 {
-    public class FighterRepository : IFighterRepository //TODO Refactor me 
+    public class FighterRepository : IFighterRepository 
     {
         public void InsertFighter(Fighter fighter)
         {
@@ -57,6 +57,29 @@ namespace WiiUSmash4.BusinessLogic
         {
             DataSet dataSet = FighterDataProvider.GetFighter(fighterId);
             return PopulateAbilitiesUrls(FighterBuilder.Build(dataSet));
+        }
+
+        public IEnumerable<Icon> GetIcons()
+        {
+            DataSet dataSet = new DataSet();
+
+            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            {
+                using (var command = new SqlCommand(DatabaseDefines.GetIcons, connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter
+                    {
+                        SelectCommand = command
+                    };
+
+                    connection.Open();
+                    adapter.Fill(dataSet);
+                }
+            }
+            return FighterBuilder.BuildIcons(dataSet.Tables[0]);
         }
 
         public void UpdateFighter(Fighter fighter)

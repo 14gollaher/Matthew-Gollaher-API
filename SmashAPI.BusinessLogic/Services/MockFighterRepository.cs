@@ -145,15 +145,20 @@ namespace WiiUSmash4.BusinessLogic
             return fighter;
         }
 
-        IEnumerable<Fighter> IFighterRepository.GetFighters()
+        public IEnumerable<Fighter> GetFighters()
         {
             throw new NotImplementedException();
         }
-        void IFighterRepository.UpdateFighter(Fighter fighter)
+
+        public IEnumerable<Icon> GetIcons()
         {
             throw new NotImplementedException();
         }
-        void IFighterRepository.DeleteFighter(int fighterId)
+        public void UpdateFighter(Fighter fighter)
+        {
+            throw new NotImplementedException();
+        }
+        public void DeleteFighter(int fighterId)
         {
             throw new NotImplementedException();
         }
