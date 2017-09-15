@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using System.IO;
 
-namespace WiiUSmash4
+namespace MatthewGollaher
 {
     public class Program
     {

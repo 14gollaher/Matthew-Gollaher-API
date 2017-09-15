@@ -7,6 +7,7 @@ namespace WiiUSmash4.BusinessLogic
         public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
+        public string IconUrl { get; set; }
         public string PortraitPictureUrl { get; set; }
         public Attributes Attributes { get; set; }
         public List<Attack> Attacks { get; set; }

@@ -83,12 +83,13 @@
         public static string Attributes_FullHopAirTimeFrames = "FullHopAirTimeFrames"; 
         #endregion
 
-        #region Fighter 
+        #region Fighter Table
         public static string Fighter_Id = "FighterId";
         public static string Fighter_TableType = "FighterTable";
         public static string Fighter_Name = "Name";
         public static string Fighter_Title = "Title";
         public static string Fighter_PortraitPictureUrl = "PortraitPictureUrl";
+        public static string Fighter_IconUrl = "IconUrl";
         #endregion
 
         #region Grab Table

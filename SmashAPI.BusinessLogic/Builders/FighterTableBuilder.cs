@@ -132,11 +132,13 @@ namespace WiiUSmash4.BusinessLogic
             table.Columns.Add(new DataColumn(DatabaseDefines.Fighter_Name));
             table.Columns.Add(new DataColumn(DatabaseDefines.Fighter_Title));
             table.Columns.Add(new DataColumn(DatabaseDefines.Fighter_PortraitPictureUrl));
+            table.Columns.Add(new DataColumn(DatabaseDefines.Fighter_IconUrl));
 
             DataRow row = table.NewRow();
             row[DatabaseDefines.Fighter_Name] = fighter.Name;
             row[DatabaseDefines.Fighter_Title] = fighter.Title;
             row[DatabaseDefines.Fighter_PortraitPictureUrl] = fighter.PortraitPictureUrl;
+            row[DatabaseDefines.Fighter_IconUrl] = fighter.IconUrl;
             table.Rows.Add(row);
 
             return table;

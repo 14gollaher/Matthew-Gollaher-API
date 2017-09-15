@@ -5,7 +5,7 @@ using WiiUSmash4.BusinessLogic;
 
 namespace WiiUSmash4
 {
-    [Route("/fighter")]
+    [Route("wiiUSmash4/fighter")]
     public class FighterController : Controller
     { 
         private IFighterRepository _fighterRepository;

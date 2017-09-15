@@ -136,7 +136,7 @@ namespace WiiUSmash4.BusinessLogic
             fighter.Name = Convert.ToString(row[DatabaseDefines.Fighter_Name]);
             fighter.Title = Convert.ToString(row[DatabaseDefines.Fighter_Title]);
             fighter.PortraitPictureUrl = Convert.ToString(row[DatabaseDefines.Fighter_PortraitPictureUrl]);
-
+            fighter.IconUrl = Convert.ToString(row[DatabaseDefines.Fighter_IconUrl]);
             return fighter;
         }
 

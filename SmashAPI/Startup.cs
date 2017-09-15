@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using WiiUSmash4.BusinessLogic;
 
-namespace WiiUSmash4
+namespace MatthewGollaher
 {
     public class Startup
     {
@@ -26,7 +26,7 @@ namespace WiiUSmash4
         {
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-            bool mockData = Convert.ToBoolean(Configuration["configuration:mock"]);
+            bool mockData = Convert.ToBoolean(Configuration["configuration:wiiUSmash4:mock"]);
 
             if (mockData)
             {
