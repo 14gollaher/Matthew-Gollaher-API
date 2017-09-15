@@ -47,6 +47,23 @@ namespace WiiUSmash4.BusinessLogic
             return fighterIds;
         }
 
+        public static IEnumerable<Icon> BuildIcons(DataTable table)
+        {
+            List<Icon> icons = new List<Icon>();
+
+            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
+            {
+                Icon icon = new Icon
+                {
+                    Id = Convert.ToInt32(item[DatabaseDefines.Icon_FighterId]),
+                    Name = Convert.ToString(item[DatabaseDefines.Icon_Name]),
+                    Url = Convert.ToString(item[DatabaseDefines.Icon_Url]),
+                };
+                icons.Add(icon);
+            });
+            return icons;
+        }
+
         private static List<Aerial> BuildAerials(DataTable table)
         {
             List<Aerial> aerials = new List<Aerial>();

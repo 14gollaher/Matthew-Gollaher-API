@@ -18,18 +18,18 @@ namespace WiiUSmash4
         [HttpPost("")]
         public IActionResult InsertFighter()//[FromBody] Fighter fighter)
         {
-            try
-            {
-                MockFighterRepository repo = new MockFighterRepository();
-                Fighter fighter = repo.GetFighter(1);
-                _fighterRepository.InsertFighter(fighter);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return StatusCode(500);
+            //try
+            //{
+            //    MockFighterRepository repo = new MockFighterRepository();
+            //    Fighter fighter = repo.GetFighter(1);
+            //    _fighterRepository.InsertFighter(fighter);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //    return StatusCode(500);
 
-            }
+            //}
             return NoContent();
         }
 

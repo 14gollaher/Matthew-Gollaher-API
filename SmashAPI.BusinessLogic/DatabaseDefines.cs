@@ -19,6 +19,7 @@
         public static string GetFighter = "dbo.Fighter_SEL";
         public static string GetAbilityFrameUrls = "dbo.AbilityFramePicture_SEL";
         public static string GetFighterIds = "dbo.FighterId_SEL";
+        public static string GetIcons = "dbo.FighterIdNameIcon_SEL";
         #endregion
 
         #region Ability Frame Picture Table
@@ -129,6 +130,13 @@
         public static string Throw_WeightBaseKnockBack = "WeightBaseKnockBack";
         public static string Throw_KnockBackGrowth = "KnockBackGrowth";
         #endregion
+
+        #region Icon
+        public static string Icon_FighterId = "fighterId";
+        public static string Icon_Name = "Name";
+        public static string Icon_Url = "IconUrl";
+        #endregion
+
 
     }
 }
