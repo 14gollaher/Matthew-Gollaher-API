@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ACM.BusinessLogic\Acm.BusinessLogic.csproj" />
     <ProjectReference Include="..\SmashAPI.BusinessLogic\WiiUSmash4.BusinessLogic.csproj" />
   </ItemGroup>
 

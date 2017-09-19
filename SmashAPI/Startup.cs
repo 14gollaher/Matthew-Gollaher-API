@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Acm.BusinessLogic;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -26,15 +28,20 @@ namespace MatthewGollaher
         {
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-            bool mockData = Convert.ToBoolean(Configuration["configuration:wiiUSmash4:mock"]);
+            var connectionString = Startup.Configuration["connectionStrings:cityInfoDBConnectionString"];
+            services.AddDbContext<AcmContext>(o => o.UseSqlServer(connectionString));
+
+            bool mockData = Convert.ToBoolean(Configuration["configuration:mock"]);
 
             if (mockData)
             {
                 services.AddScoped<IFighterRepository, MockFighterRepository>();
+                services.AddScoped<IMemberRepository, MockMemberRepository>();
             }
             else
             {
                 services.AddScoped<IFighterRepository, FighterRepository>();
+                services.AddScoped<IMemberRepository, MemberRepository>();
             }
         }
 
