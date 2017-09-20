@@ -28,7 +28,7 @@ namespace MatthewGollaher
         {
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-            var connectionString = Startup.Configuration["connectionStrings:cityInfoDBConnectionString"];
+            var connectionString = Configuration["connectionStrings:acmDbConnectionString"];
             services.AddDbContext<AcmContext>(o => o.UseSqlServer(connectionString));
 
             bool mockData = Convert.ToBoolean(Configuration["configuration:mock"]);

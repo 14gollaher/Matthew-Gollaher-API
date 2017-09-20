@@ -6,6 +6,13 @@ namespace Acm.BusinessLogic
 {
     public class MemberRepository : IMemberRepository
     {
+        private AcmContext _context;
+
+        public MemberRepository(AcmContext context)
+        {
+            _context = context;
+        }
+
         public void DeleteMember(int memberId)
         {
             throw new NotImplementedException();
@@ -23,12 +30,13 @@ namespace Acm.BusinessLogic
 
         public List<Member> GetMembers()
         {
-            throw new NotImplementedException();
+            return _context.Members.ToList();
         }
 
         public void InsertMember(Member member)
         {
-            throw new NotImplementedException();
+            _context.Members.Add(member);
+            _context.SaveChanges();
         }
     }
 }

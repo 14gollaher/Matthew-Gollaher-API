@@ -4,11 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Acm.BusinessLogic
 {
-    public class Member
+    public class Member : Base
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
@@ -29,7 +26,7 @@ namespace Acm.BusinessLogic
 
     public enum OfficerPosition
     {
-        President,
+        President = 1,
         VicePresident,
         Secretary,
         Treasurer,

@@ -1,35 +1,31 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Scripts\FighterModel.ts" />
     <None Remove="Scripts\Home\HomePageViewModel.ts" />
   </ItemGroup>
-
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
-
   <ItemGroup>
-    <ProjectReference Include="..\ACM.BusinessLogic\Acm.BusinessLogic.csproj" />
-    <ProjectReference Include="..\SmashAPI.BusinessLogic\WiiUSmash4.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Acm.BusinessLogic\Acm.BusinessLogic.csproj" />
+    <ProjectReference Include="..\WiiUSmash4.BusinessLogic\WiiUSmash4.BusinessLogic.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Home\FighterModel.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomePageViewModel.ts" />
   </ItemGroup>
-
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
+  </ItemGroup>
 </Project>
