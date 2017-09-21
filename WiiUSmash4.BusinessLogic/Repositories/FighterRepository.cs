@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
 
 namespace WiiUSmash4.BusinessLogic
 {

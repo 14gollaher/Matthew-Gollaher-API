@@ -5,9 +5,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Scripts\FighterModel.ts" />
-    <None Remove="Scripts\Home\HomePageViewModel.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Scripts\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
@@ -20,9 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Acm.BusinessLogic\Acm.BusinessLogic.csproj" />
     <ProjectReference Include="..\WiiUSmash4.BusinessLogic\WiiUSmash4.BusinessLogic.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\Home\HomePageViewModel.ts" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
