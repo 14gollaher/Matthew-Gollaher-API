@@ -22,7 +22,6 @@
     <ProjectReference Include="..\WiiUSmash4.BusinessLogic\WiiUSmash4.BusinessLogic.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\Home\FighterModel.ts" />
     <TypeScriptCompile Include="Scripts\Home\HomePageViewModel.ts" />
   </ItemGroup>
   <ItemGroup>
