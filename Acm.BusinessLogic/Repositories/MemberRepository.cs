@@ -6,11 +6,14 @@ namespace Acm.BusinessLogic
 {
     public class MemberRepository : IMemberRepository
     {
-        private AcmContext _context;
+        private readonly AcmContext _context;
 
-        public MemberRepository(AcmContext context)
+        private readonly AcmConfiguration _configuration;
+
+        public MemberRepository(AcmContext context, AcmConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         public void DeleteMember(int memberId)

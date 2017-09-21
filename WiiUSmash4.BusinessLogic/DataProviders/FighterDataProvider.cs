@@ -85,6 +85,32 @@ namespace WiiUSmash4.BusinessLogic
             return dataSet.Tables[0];
         }
         
+        public DataTable GetAbilityFrameUrls(int fighterId, string ability)
+        {
+            DataSet dataSet = new DataSet();
+
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
+            {
+                using (var command = new SqlCommand(DatabaseDefines.GetAbilityFrameUrls, connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    command.Parameters.Add(new SqlParameter(DatabaseDefines.Fighter_Id, fighterId));
+                    command.Parameters.Add(new SqlParameter(DatabaseDefines.AbilityFramePicture_AbilityName, ability));
+
+                    SqlDataAdapter adapter = new SqlDataAdapter
+                    {
+                        SelectCommand = command
+                    };
+
+                    connection.Open();
+                    adapter.Fill(dataSet);
+                }
+            }
+            return dataSet.Tables[0];
+        }
+
         public int InsertPartialFighter(Fighter fighter)
         {
             int fighterId = 0;

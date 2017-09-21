@@ -87,30 +87,11 @@ namespace WiiUSmash4.BusinessLogic
             throw new NotImplementedException();
         }
 
-        private List<string> GetAbilityFrameUrls(int fighterId, string ability) //TODO MOVE ME TO D.Prov
+        private List<string> GetAbilityFrameUrls(int fighterId, string ability)
         {
-            DataSet dataSet = new DataSet();
-
-            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
-            {
-                using (var command = new SqlCommand(DatabaseDefines.GetAbilityFrameUrls, connection)
-                {
-                    CommandType = CommandType.StoredProcedure
-                })
-                {
-                    command.Parameters.Add(new SqlParameter(DatabaseDefines.Fighter_Id, fighterId));
-                    command.Parameters.Add(new SqlParameter(DatabaseDefines.AbilityFramePicture_AbilityName, ability));
-
-                    SqlDataAdapter adapter = new SqlDataAdapter
-                    {
-                        SelectCommand = command
-                    };
-
-                    connection.Open();
-                    adapter.Fill(dataSet);
-                }
-            }
-            return FighterBuilder.BuildAbilityFrameUrls(dataSet.Tables[0]);
+            FighterDataProvider dataProvider = new FighterDataProvider(_configuration);
+            DataTable dataTable = dataProvider.GetAbilityFrameUrls(fighterId, ability);
+            return FighterBuilder.BuildAbilityFrameUrls(dataTable);
         }
 
         private Fighter PopulateAbilitiesUrls(Fighter fighter)

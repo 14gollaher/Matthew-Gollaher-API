@@ -16,10 +16,12 @@ namespace Acm.BusinessLogic
         public string Email { get; set; }
         [Required]
         public OfficerPosition OfficerPostion { get; set; }
-        [Required]
         public DateTime? MembershipExpiration { get; set; }
         [Required]
+        [MaxLength(20)]
         public string StudentId { get; set; }
+        [Required]
+        [MaxLength(20)]
         public string AcmId { get; set; }
     }
 
