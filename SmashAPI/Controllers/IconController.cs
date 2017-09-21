@@ -5,6 +5,7 @@ using WiiUSmash4.BusinessLogic;
 
 namespace WiiUSmash4
 {
+    //[Route("wiiusmash4/icon")]
     [Route("/icon")]
     public class IconController : Controller
     {

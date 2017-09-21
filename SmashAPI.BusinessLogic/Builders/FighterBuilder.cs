@@ -51,7 +51,7 @@ namespace WiiUSmash4.BusinessLogic
         {
             List<Icon> icons = new List<Icon>();
 
-            Parallel.ForEach(table.Rows.Cast<DataRow>(), item =>
+            foreach (DataRow item in table.Rows)
             {
                 Icon icon = new Icon
                 {
@@ -60,7 +60,8 @@ namespace WiiUSmash4.BusinessLogic
                     Url = Convert.ToString(item[DatabaseDefines.Icon_Url]),
                 };
                 icons.Add(icon);
-            });
+            }
+
             return icons;
         }
 
