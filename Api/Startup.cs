@@ -33,7 +33,7 @@ namespace MatthewGollaher
             services.AddSingleton(Configuration.GetSection("Acm").Get<AcmConfiguration>());
             services.AddSingleton(Configuration.GetSection("WiiUSmash4").Get<WiiUSmash4Configuration>());
 
-            var connectionString = Configuration["Acm:AcmDbConnectionString"];
+            string connectionString = Configuration["Acm:AcmDbConnectionString"];
             services.AddDbContext<AcmContext>(o => o.UseSqlServer(connectionString));
 
             bool mockData = Convert.ToBoolean(Configuration["Global:Mock"]);
