@@ -2,8 +2,6 @@
 {
     public class DatabaseDefines
     {
-        public static string SmashDbConnectionString = "Server=tcp:matthewgollaher.database.windows.net,1433;Initial Catalog=WiiUSmash4;Persist Security Info=False;User ID=gollaher14;Password=ABCmeow123!!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-
         #region Stored Procedures
         public static string InsertFighter = "dbo.Fighter_INS";
         public static string InsertAbilityFramePicture = "dbo.AbilityFramePicture_INS";

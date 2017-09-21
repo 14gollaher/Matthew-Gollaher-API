@@ -1,16 +1,23 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 
 namespace WiiUSmash4.BusinessLogic
 {
-    public static class FighterDataProvider
+    public class FighterDataProvider
     {
-        public static DataSet GetFighters()
+        private readonly WiiUSmash4Configuration _configuration;
+
+        public FighterDataProvider(WiiUSmash4Configuration configuration)
+        {
+            _configuration = configuration;
+        }
+        public DataSet GetFighters()
         {
             DataSet dataSet = new DataSet();
 
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.GetFighterIds, connection)
                 {
@@ -29,11 +36,11 @@ namespace WiiUSmash4.BusinessLogic
             return dataSet;
         }
 
-        public static DataSet GetFighter(int fighterId)
+        public DataSet GetFighter(int fighterId)
         {
             DataSet dataSet = new DataSet();
 
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.GetFighter, connection)
                 {
@@ -54,10 +61,34 @@ namespace WiiUSmash4.BusinessLogic
             return dataSet;
         }
 
-        public static int InsertPartialFighter(Fighter fighter)
+        public DataTable GetIcons()
+        {
+            DataSet dataSet = new DataSet();
+
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
+            {
+                using (var command = new SqlCommand(DatabaseDefines.GetIcons, connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter
+                    {
+                        SelectCommand = command
+                    };
+
+                    connection.Open();
+                    adapter.Fill(dataSet);
+                }
+            }
+
+            return dataSet.Tables[0];
+        }
+        
+        public int InsertPartialFighter(Fighter fighter)
         {
             int fighterId = 0;
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertFighter, connection)
                 {
@@ -73,9 +104,9 @@ namespace WiiUSmash4.BusinessLogic
             return fighterId;
         }
 
-        public static void InsertAttributes(int fighterId, Attributes attributes)
+        public void InsertAttributes(int fighterId, Attributes attributes)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertAttributes, connection)
                 {
@@ -90,9 +121,9 @@ namespace WiiUSmash4.BusinessLogic
             }
         }
 
-        public static void InsertAerial(int fighterId, Aerial aerial)
+        public void InsertAerial(int fighterId, Aerial aerial)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertAerial, connection)
                 {
@@ -108,9 +139,9 @@ namespace WiiUSmash4.BusinessLogic
             }
         }
 
-        public static void InsertAttack(int fighterId, Attack attack)
+        public void InsertAttack(int fighterId, Attack attack)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertAttack, connection)
                 {
@@ -126,9 +157,9 @@ namespace WiiUSmash4.BusinessLogic
             }
         }
 
-        public static void InsertGrab(int fighterId, Grab grab)
+        public void InsertGrab(int fighterId, Grab grab)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertGrab, connection)
                 {
@@ -144,9 +175,9 @@ namespace WiiUSmash4.BusinessLogic
             }
         }
 
-        public static void InsertRoll(int fighterId, Roll roll)
+        public void InsertRoll(int fighterId, Roll roll)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertRoll, connection)
                 {
@@ -162,9 +193,9 @@ namespace WiiUSmash4.BusinessLogic
             }
         }
 
-        public static void InsertSpecial(int fighterId, Special special)
+        public void InsertSpecial(int fighterId, Special special)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertSpecial, connection)
                 {
@@ -180,9 +211,9 @@ namespace WiiUSmash4.BusinessLogic
             }
         }
 
-        public static void InsertThrow(int fighterId, Throw throwAbility)
+        public void InsertThrow(int fighterId, Throw throwAbility)
         {
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.InsertThrow, connection)
                 {

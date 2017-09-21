@@ -28,10 +28,15 @@ namespace MatthewGollaher
         {
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
 
-            var connectionString = Configuration["connectionStrings:acmDbConnectionString"];
+            services.AddOptions();
+
+            services.AddSingleton(Configuration.GetSection("Acm").Get<AcmConfiguration>());
+            services.AddSingleton(Configuration.GetSection("WiiUSmash4").Get<WiiUSmash4Configuration>());
+
+            var connectionString = Configuration["Acm:AcmDbConnectionString"];
             services.AddDbContext<AcmContext>(o => o.UseSqlServer(connectionString));
 
-            bool mockData = Convert.ToBoolean(Configuration["configuration:mock"]);
+            bool mockData = Convert.ToBoolean(Configuration["Global:Mock"]);
 
             if (mockData)
             {

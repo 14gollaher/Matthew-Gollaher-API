@@ -3,45 +3,55 @@ using System.Data;
 using System.Data.SqlClient;
 using System;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
 
 namespace WiiUSmash4.BusinessLogic
 {
     public class FighterRepository : IFighterRepository 
     {
+        private readonly WiiUSmash4Configuration _configuration;
+
+        public FighterRepository(WiiUSmash4Configuration configuration)
+        {
+            _configuration = configuration;
+        }
+
         public void InsertFighter(Fighter fighter)
         {
-            fighter.Id = FighterDataProvider.InsertPartialFighter(fighter);
-            FighterDataProvider.InsertAttributes(fighter.Id, fighter.Attributes);
+            FighterDataProvider dataProvider = new FighterDataProvider(_configuration);
+            fighter.Id = dataProvider.InsertPartialFighter(fighter);
+            dataProvider.InsertAttributes(fighter.Id, fighter.Attributes);
 
             Parallel.ForEach(fighter.Aerials, item =>
             {
-                FighterDataProvider.InsertAerial(fighter.Id, item);
+                dataProvider.InsertAerial(fighter.Id, item);
             });
             Parallel.ForEach(fighter.Attacks, item =>
             {
-                FighterDataProvider.InsertAttack(fighter.Id, item);
+                dataProvider.InsertAttack(fighter.Id, item);
             });
             Parallel.ForEach(fighter.Grabs, item =>
             {
-                FighterDataProvider.InsertGrab(fighter.Id, item);
+                dataProvider.InsertGrab(fighter.Id, item);
             });
             Parallel.ForEach(fighter.Rolls, item =>
             {
-                FighterDataProvider.InsertRoll(fighter.Id, item);
+                dataProvider.InsertRoll(fighter.Id, item);
             });
             Parallel.ForEach(fighter.Specials, item =>
             {
-                FighterDataProvider.InsertSpecial(fighter.Id, item);
+                dataProvider.InsertSpecial(fighter.Id, item);
             });
             Parallel.ForEach(fighter.Throws, item =>
             {
-                FighterDataProvider.InsertThrow(fighter.Id, item);
+                dataProvider.InsertThrow(fighter.Id, item);
             });
         }
 
         public IEnumerable<Fighter> GetFighters()
         {
-            DataSet dataSet = FighterDataProvider.GetFighters();
+            FighterDataProvider dataProvider = new FighterDataProvider(_configuration);
+            DataSet dataSet = dataProvider.GetFighters();
             List<int> fighterIds = FighterBuilder.BuildFighterIds(dataSet.Tables[0]);
 
             List<Fighter> fighters = new List<Fighter>();
@@ -55,31 +65,16 @@ namespace WiiUSmash4.BusinessLogic
 
         public Fighter GetFighter(int fighterId)
         {
-            DataSet dataSet = FighterDataProvider.GetFighter(fighterId);
+            FighterDataProvider dataProvider = new FighterDataProvider(_configuration);
+            DataSet dataSet = dataProvider.GetFighter(fighterId);
             return PopulateAbilitiesUrls(FighterBuilder.Build(dataSet));
         }
 
         public IEnumerable<Icon> GetIcons()
         {
-            DataSet dataSet = new DataSet();
-
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
-            {
-                using (var command = new SqlCommand(DatabaseDefines.GetIcons, connection)
-                {
-                    CommandType = CommandType.StoredProcedure
-                })
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter
-                    {
-                        SelectCommand = command
-                    };
-
-                    connection.Open();
-                    adapter.Fill(dataSet);
-                }
-            }
-            return FighterBuilder.BuildIcons(dataSet.Tables[0]);
+            FighterDataProvider dataProvider = new FighterDataProvider(_configuration);
+            DataTable dataTable = dataProvider.GetIcons();
+            return FighterBuilder.BuildIcons(dataTable);
         }
 
         public void UpdateFighter(Fighter fighter)
@@ -92,11 +87,11 @@ namespace WiiUSmash4.BusinessLogic
             throw new NotImplementedException();
         }
 
-        private List<string> GetAbilityFrameUrls(int fighterId, string ability)
+        private List<string> GetAbilityFrameUrls(int fighterId, string ability) //TODO MOVE ME TO D.Prov
         {
             DataSet dataSet = new DataSet();
 
-            using (var connection = new SqlConnection(DatabaseDefines.SmashDbConnectionString))
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.GetAbilityFrameUrls, connection)
                 {

@@ -15,7 +15,8 @@ namespace Acm.BusinessLogic
 
         public void DeleteMember(int memberId)
         {
-            throw new NotImplementedException();
+            Member oldMember = _context.Members.FirstOrDefault(m => m.Id == memberId);
+            _context.Members.Remove(oldMember);
         }
 
         public void EditMember(Member member)
@@ -25,7 +26,7 @@ namespace Acm.BusinessLogic
 
         public Member GetMember(int memberId)
         {
-            throw new NotImplementedException();
+            return _context.Members.FirstOrDefault(m => m.Id == memberId);
         }
 
         public List<Member> GetMembers()

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MatthewGollaher
+namespace Api
 {
     [Route("/")]
     public class HomeController : Controller
