@@ -58,6 +58,7 @@ namespace WiiUSmash4.BusinessLogic
                     FighterId = Convert.ToInt32(item[DatabaseDefines.Icon_FighterId]),
                     Name = Convert.ToString(item[DatabaseDefines.Icon_Name]),
                     Url = Convert.ToString(item[DatabaseDefines.Icon_Url]),
+                    Title = Convert.ToString(item[DatabaseDefines.Icon_Title])
                 };
                 icons.Add(icon);
             }
