@@ -68,11 +68,11 @@ namespace WiiUSmash4.BusinessLogic
             return PopulateAbilitiesUrls(FighterBuilder.Build(dataSet));
         }
 
-        public IEnumerable<Icon> GetIcons()
+        public IEnumerable<Card> GetCards()
         {
             FighterDataProvider dataProvider = new FighterDataProvider(_configuration);
             DataTable dataTable = dataProvider.GetIcons();
-            return FighterBuilder.BuildIcons(dataTable);
+            return FighterBuilder.BuildCards(dataTable);
         }
 
         public void UpdateFighter(Fighter fighter)

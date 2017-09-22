@@ -66,7 +66,7 @@ namespace WiiUSmash4.BusinessLogic
 
             using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
-                using (var command = new SqlCommand(DatabaseDefines.GetIcons, connection)
+                using (var command = new SqlCommand(DatabaseDefines.GetCards, connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })

@@ -7,7 +7,7 @@ namespace WiiUSmash4.BusinessLogic
         void InsertFighter(Fighter fighter);
         IEnumerable<Fighter> GetFighters();
         Fighter GetFighter(int fighterId);
-        IEnumerable<Icon> GetIcons();
+        IEnumerable<Card> GetCards();
         void UpdateFighter(Fighter fighter);
         void DeleteFighter(int fighterId);
     }

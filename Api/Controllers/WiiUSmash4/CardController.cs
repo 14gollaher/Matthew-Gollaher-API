@@ -5,23 +5,23 @@ using WiiUSmash4.BusinessLogic;
 
 namespace WiiUSmash4
 {
-    [Route("wiiusmash4/icon")]
-    public class IconController : Controller
+    [Route("wiiusmash4/card")]
+    public class CardController : Controller
     {
         private IFighterRepository _fighterRepository;
 
-        public IconController(IFighterRepository fighterRepository)
+        public CardController(IFighterRepository fighterRepository)
         {
             _fighterRepository = fighterRepository;
         }
 
         [HttpGet("")]
-        public IActionResult GetIcons()
+        public IActionResult GetCards()
         {
-            IEnumerable<Icon> icons;
+            IEnumerable<Card> icons;
             try
             {
-                icons = _fighterRepository.GetIcons();
+                icons = _fighterRepository.GetCards();
             }
             catch (Exception ex)
             {

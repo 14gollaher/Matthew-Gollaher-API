@@ -17,7 +17,7 @@
         public static string GetFighter = "dbo.Fighter_SEL";
         public static string GetAbilityFrameUrls = "dbo.AbilityFramePicture_SEL";
         public static string GetFighterIds = "dbo.FighterId_SEL";
-        public static string GetIcons = "dbo.Icon_SEL";
+        public static string GetCards = "dbo.Card_SEL";
         #endregion
 
         #region Ability Frame Picture Table
@@ -130,10 +130,11 @@
         #endregion
 
         #region Icon
-        public static string Icon_FighterId = "FighterId";
-        public static string Icon_Name = "Name";
-        public static string Icon_Url = "IconUrl";
-        public static string Icon_Title = "Title";
+        public static string Card_FighterId = "FighterId";
+        public static string Card_Name = "Name";
+        public static string Card_Title = "Title";
+        public static string Card_IconUrl = "IconUrl";
+        public static string Card_PortraitUrl = "PortraitPictureUrl";
         #endregion
 
 

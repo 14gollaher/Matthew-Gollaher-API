@@ -150,7 +150,7 @@ namespace WiiUSmash4.BusinessLogic
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Icon> GetIcons()
+        public IEnumerable<Card> GetCards()
         {
             throw new NotImplementedException();
         }

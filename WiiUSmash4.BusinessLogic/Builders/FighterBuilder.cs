@@ -47,18 +47,19 @@ namespace WiiUSmash4.BusinessLogic
             return fighterIds;
         }
 
-        public static IEnumerable<Icon> BuildIcons(DataTable table)
+        public static IEnumerable<Card> BuildCards(DataTable table)
         {
-            List<Icon> icons = new List<Icon>();
+            List<Card> icons = new List<Card>();
 
             foreach (DataRow item in table.Rows)
             {
-                Icon icon = new Icon
+                Card icon = new Card
                 {
-                    FighterId = Convert.ToInt32(item[DatabaseDefines.Icon_FighterId]),
-                    Name = Convert.ToString(item[DatabaseDefines.Icon_Name]),
-                    Url = Convert.ToString(item[DatabaseDefines.Icon_Url]),
-                    Title = Convert.ToString(item[DatabaseDefines.Icon_Title])
+                    FighterId = Convert.ToInt32(item[DatabaseDefines.Card_FighterId]),
+                    Name = Convert.ToString(item[DatabaseDefines.Card_Name]),
+                    Title = Convert.ToString(item[DatabaseDefines.Card_Title]),
+                    IconUrl = Convert.ToString(item[DatabaseDefines.Card_IconUrl]),
+                    PortraitUrl = Convert.ToString(item[DatabaseDefines.Card_PortraitUrl])
                 };
                 icons.Add(icon);
             }
