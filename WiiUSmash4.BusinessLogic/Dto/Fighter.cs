@@ -16,6 +16,5 @@ namespace WiiUSmash4.BusinessLogic
         public List<Roll> Rolls { get; set; }
         public List<Aerial> Aerials { get; set; }
         public List<Special> Specials { get; set; }
-
     }
 }

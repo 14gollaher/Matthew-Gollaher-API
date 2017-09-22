@@ -27,14 +27,21 @@ namespace MatthewGollaher
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().AddMvcOptions(o => o.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter()));
-
             services.AddOptions();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
 
             services.AddSingleton(Configuration.GetSection("Acm").Get<AcmConfiguration>());
             services.AddSingleton(Configuration.GetSection("WiiUSmash4").Get<WiiUSmash4Configuration>());
-
-            string connectionString = Configuration["Acm:AcmDbConnectionString"];
-            services.AddDbContext<AcmContext>(o => o.UseSqlServer(connectionString));
+            services.AddDbContext<AcmContext>(o => o.UseSqlServer(Configuration["Acm:AcmDbConnectionString"]));
 
             bool mockData = Convert.ToBoolean(Configuration["Global:Mock"]);
 
@@ -53,8 +60,14 @@ namespace MatthewGollaher
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
-     
+
             app.UseDeveloperExceptionPage();
+
+            app.UseCors("AllowAllHeaders");
+
+            //app.UseCors(builder =>
+            //    builder.WithOrigins(Configuration["Cors:GollaherGamesOrigin"])
+            //               .AllowAnyHeader());
 
             app.UseStatusCodePages();
 
