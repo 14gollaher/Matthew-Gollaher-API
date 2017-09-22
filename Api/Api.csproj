@@ -4,10 +4,12 @@
     <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Scripts\FighterModel.ts" />
+    <Compile Remove="Scripts\**" />
+    <Content Remove="Scripts\**" />
+    <EmbeddedResource Remove="Scripts\**" />
+    <None Remove="Scripts\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Scripts\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
