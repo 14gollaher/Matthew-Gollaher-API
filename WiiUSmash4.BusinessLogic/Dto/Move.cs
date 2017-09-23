@@ -5,7 +5,7 @@ namespace WiiUSmash4.BusinessLogic
     public class Attack : Move
     {
         public string HitboxActiveRange { get; set; } 
-        public int FirstActionableFrame { get; set; }
+        public string FirstActionableFrame { get; set; }
         public string BaseDamage { get; set; }
         public string ShieldDamage { get; set; }
         public string Angle { get; set; }
@@ -17,7 +17,7 @@ namespace WiiUSmash4.BusinessLogic
     public class Grab : Move
     {
         public string HitboxActiveRange { get; set; }
-        public int FirstActionableFrame { get; set; }
+        public string FirstActionableFrame { get; set; }
     }
 
     public class Throw : Move
@@ -33,13 +33,13 @@ namespace WiiUSmash4.BusinessLogic
     public class Roll : Move
     {
         public string Intangibility { get; set; }
-        public int FirstActionableFrame { get; set; }
+        public string FirstActionableFrame { get; set; }
     }
 
     public class Aerial : Move
     {
         public string HitboxActiveRange { get; set; }
-        public int FirstActionableFrame { get; set; }
+        public string FirstActionableFrame { get; set; }
         public string BaseDamage { get; set; }
         public string ShieldDamage { get; set; }
         public string Angle { get; set; }
@@ -53,7 +53,7 @@ namespace WiiUSmash4.BusinessLogic
     public class Special : Move
     {
         public string HitboxActiveRange { get; set; }
-        public int FirstActionableFrame { get; set; }
+        public string FirstActionableFrame { get; set; }
         public string BaseDamage { get; set; }
         public string ShieldDamage { get; set; }
         public string Angle { get; set; }

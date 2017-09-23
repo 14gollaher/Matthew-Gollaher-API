@@ -101,7 +101,7 @@ namespace WiiUSmash4.BusinessLogic
                 {
                     Name = Convert.ToString(item[DatabaseDefines.Attack_Name]),
                     HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Attack_HitboxActiveRange]),
-                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Attack_FirstActionableFrame]),
+                    FirstActionableFrame = Convert.ToString(item[DatabaseDefines.Attack_FirstActionableFrame]),
                     BaseDamage = Convert.ToString(item[DatabaseDefines.Attack_BaseDamage]),
                     ShieldDamage = Convert.ToString(item[DatabaseDefines.Attack_ShieldDamage]),
                     Angle = Convert.ToString(item[DatabaseDefines.Attack_Angle]),
@@ -119,30 +119,30 @@ namespace WiiUSmash4.BusinessLogic
             Attributes attributes = new Attributes();
 
             DataRow row = table.Rows[0];
-            attributes.Weight = Convert.ToDouble(row[DatabaseDefines.Attributes_Weight]);
+            attributes.Weight = Convert.ToString(row[DatabaseDefines.Attributes_Weight]);
             attributes.WeightRank = Convert.ToInt32(row[DatabaseDefines.Attributes_WeightRank]);
-            attributes.RunSpeed = Convert.ToDouble(row[DatabaseDefines.Attributes_RunSpeed]);
+            attributes.RunSpeed = Convert.ToString(row[DatabaseDefines.Attributes_RunSpeed]);
             attributes.RunSpeedRank = Convert.ToInt32(row[DatabaseDefines.Attributes_RunSpeedRank]);
-            attributes.WalkSpeed = Convert.ToDouble(row[DatabaseDefines.Attributes_WalkSpeed]);
+            attributes.WalkSpeed = Convert.ToString(row[DatabaseDefines.Attributes_WalkSpeed]);
             attributes.WalkSpeedRank = Convert.ToInt32(row[DatabaseDefines.Attributes_WalkSpeedRank]);
-            attributes.AirSpeed = Convert.ToDouble(row[DatabaseDefines.Attributes_AirSpeed]);
+            attributes.AirSpeed = Convert.ToString(row[DatabaseDefines.Attributes_AirSpeed]);
             attributes.AirSpeedRank = Convert.ToInt32(row[DatabaseDefines.Attributes_AirSpeedRank]);
-            attributes.FallSpeed = Convert.ToDouble(row[DatabaseDefines.Attributes_FallSpeed]);
+            attributes.FallSpeed = Convert.ToString(row[DatabaseDefines.Attributes_FallSpeed]);
             attributes.FallSpeedRank = Convert.ToInt32(row[DatabaseDefines.Attributes_FallSpeedRank]);
-            attributes.AirAcceleration = Convert.ToDouble(row[DatabaseDefines.Attributes_AirAcceleration]);
-            attributes.Gravity = Convert.ToDouble(row[DatabaseDefines.Attributes_Gravity]);
-            attributes.ShortHopAirTimeFrames = Convert.ToInt32(row[DatabaseDefines.Attributes_ShortHopAirTimeFrames]);
-            attributes.FastFallSpeed = Convert.ToDouble(row[DatabaseDefines.Attributes_FastFallSpeed]);
+            attributes.AirAcceleration = Convert.ToString(row[DatabaseDefines.Attributes_AirAcceleration]);
+            attributes.Gravity = Convert.ToString(row[DatabaseDefines.Attributes_Gravity]);
+            attributes.ShortHopAirTimeFrames = Convert.ToString(row[DatabaseDefines.Attributes_ShortHopAirTimeFrames]);
+            attributes.FastFallSpeed = Convert.ToString(row[DatabaseDefines.Attributes_FastFallSpeed]);
             attributes.FastFallSpeedRank = Convert.ToInt32(row[DatabaseDefines.Attributes_FastFallSpeedRank]);
-            attributes.MaximumJumps = Convert.ToInt32(row[DatabaseDefines.Attributes_MaximumJumps]);
+            attributes.MaximumJumps = Convert.ToString(row[DatabaseDefines.Attributes_MaximumJumps]);
             attributes.WallJump = Convert.ToBoolean(row[DatabaseDefines.Attributes_WallJump]);
             attributes.WallCling = Convert.ToBoolean(row[DatabaseDefines.Attributes_WallCling]);
             attributes.Crawl = Convert.ToBoolean(row[DatabaseDefines.Attributes_Crawl]);
             attributes.Tether = Convert.ToBoolean(row[DatabaseDefines.Attributes_Tether]);
-            attributes.JumpSquatFrames = Convert.ToInt32(row[DatabaseDefines.Attributes_JumpSquatFrames]);
-            attributes.SoftLandingLagFrames = Convert.ToInt32(row[DatabaseDefines.Attributes_SoftLandingLagFrames]);
-            attributes.HardLandingLagFrames = Convert.ToInt32(row[DatabaseDefines.Attributes_HardLandingLagFrames]);
-            attributes.FullHopAirTimeFrames = Convert.ToInt32(row[DatabaseDefines.Attributes_FullHopAirTimeFrames]);
+            attributes.JumpSquatFrames = Convert.ToString(row[DatabaseDefines.Attributes_JumpSquatFrames]);
+            attributes.SoftLandingLagFrames = Convert.ToString(row[DatabaseDefines.Attributes_SoftLandingLagFrames]);
+            attributes.HardLandingLagFrames = Convert.ToString(row[DatabaseDefines.Attributes_HardLandingLagFrames]);
+            attributes.FullHopAirTimeFrames = Convert.ToString(row[DatabaseDefines.Attributes_FullHopAirTimeFrames]);
 
             return attributes;
         }
@@ -170,7 +170,7 @@ namespace WiiUSmash4.BusinessLogic
                 {
                     Name = Convert.ToString(item[DatabaseDefines.Grab_Name]),
                     HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Grab_HitBoxActiveRange]),
-                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Special_FirstActionableFrame]),
+                    FirstActionableFrame = Convert.ToString(item[DatabaseDefines.Special_FirstActionableFrame]),
                 };
                 grabs.Add(grab);
             });
@@ -186,7 +186,7 @@ namespace WiiUSmash4.BusinessLogic
                 {
                     Name = Convert.ToString(item[DatabaseDefines.Roll_Name]),
                     Intangibility = Convert.ToString(item[DatabaseDefines.Roll_Intangibility]),
-                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Roll_FirstActionableFrame]),
+                    FirstActionableFrame = Convert.ToString(item[DatabaseDefines.Roll_FirstActionableFrame]),
                 };
                 rolls.Add(roll);
             });
@@ -203,7 +203,7 @@ namespace WiiUSmash4.BusinessLogic
                 {
                     Name = Convert.ToString(item[DatabaseDefines.Special_Name]),
                     HitboxActiveRange = Convert.ToString(item[DatabaseDefines.Special_HitboxActiveRange]),
-                    FirstActionableFrame = Convert.ToInt32(item[DatabaseDefines.Special_FirstActionableFrame]),
+                    FirstActionableFrame = Convert.ToString(item[DatabaseDefines.Special_FirstActionableFrame]),
                     BaseDamage = Convert.ToString(item[DatabaseDefines.Special_BaseDamage]),
                     ShieldDamage = Convert.ToString(item[DatabaseDefines.Special_ShieldDamage]),
                     Angle = Convert.ToString(item[DatabaseDefines.Special_Angle]),

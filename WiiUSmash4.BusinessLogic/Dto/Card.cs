@@ -7,6 +7,5 @@
         public string Title { get; set; }
         public string IconUrl { get; set; }
         public string PortraitUrl { get; set; }
-
     }
 }
