@@ -18,7 +18,6 @@ namespace WiiUSmash4.BusinessLogic
             fighter.Rolls = BuildRolls(dataSet.Tables[5]);
             fighter.Specials = BuildSpecials(dataSet.Tables[6]);
             fighter.Throws = BuildThrows(dataSet.Tables[7]);
-
             return fighter;
         }
 
@@ -47,6 +46,17 @@ namespace WiiUSmash4.BusinessLogic
             return fighterIds;
         }
 
+        public static IEnumerable<string> BuildAbilityTypes (DataTable table)
+        {
+            List<string> abilityTypes = new List<string>();
+
+            foreach (DataRow item in table.Rows)
+            {
+                abilityTypes.Add(Convert.ToString(item[DatabaseDefines.AbilityType_Name]));
+            }
+            return abilityTypes;
+        }
+
         public static IEnumerable<Card> BuildCards(DataTable table)
         {
             List<Card> icons = new List<Card>();
@@ -63,7 +73,6 @@ namespace WiiUSmash4.BusinessLogic
                 };
                 icons.Add(icon);
             }
-
             return icons;
         }
 
@@ -143,7 +152,6 @@ namespace WiiUSmash4.BusinessLogic
             attributes.SoftLandingLagFrames = Convert.ToString(row[DatabaseDefines.Attributes_SoftLandingLagFrames]);
             attributes.HardLandingLagFrames = Convert.ToString(row[DatabaseDefines.Attributes_HardLandingLagFrames]);
             attributes.FullHopAirTimeFrames = Convert.ToString(row[DatabaseDefines.Attributes_FullHopAirTimeFrames]);
-
             return attributes;
         }
 

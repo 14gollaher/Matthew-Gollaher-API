@@ -5,35 +5,50 @@ using WiiUSmash4.BusinessLogic;
 
 namespace WiiUSmash4
 {
-    [Route("wiiUSmash4/fighter")]
-    public class FighterController : Controller
+    [Route("WiiUSmash4")]
+    public class WiiUSmash4Controller : Controller
     { 
         private IFighterRepository _fighterRepository;
 
-        public FighterController(IFighterRepository fighterRepository)
+        public WiiUSmash4Controller(IFighterRepository fighterRepository)
         {
             _fighterRepository = fighterRepository;
         }
 
-        [HttpPost("")]
-        public IActionResult InsertFighter()//[FromBody] Fighter fighter)
+        [HttpGet("Card")]
+        public IActionResult GetCards()
         {
-            //try
-            //{
-            //    MockFighterRepository repo = new MockFighterRepository();
-            //    Fighter fighter = repo.GetFighter(1);
-            //    _fighterRepository.InsertFighter(fighter);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.ToString());
-            //    return StatusCode(500);
+            IEnumerable<Card> icons;
+            try
+            {
+                icons = _fighterRepository.GetCards();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500);
 
-            //}
-            return NoContent();
+            }
+            return Ok(icons);
         }
 
-        [HttpGet()]
+        [HttpGet("AbilityType")]
+        public IActionResult GetAbilityTypes()
+        {
+            IEnumerable<string> abilityTypes;
+            try
+            {
+                abilityTypes = _fighterRepository.GetAbilityTypes();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500);
+            }
+            return Ok(abilityTypes);
+        }
+
+        [HttpGet("Fighter")]
         public IActionResult GetFighters()
         {
             IEnumerable<Fighter> fighters;
@@ -49,7 +64,7 @@ namespace WiiUSmash4
             return Ok(fighters);
         }
 
-        [HttpGet("{fighterId}")]
+        [HttpGet("Fighter/{fighterId}")]
         public IActionResult GetFighter(int fighterId)
         {
             Fighter fighter = new Fighter();

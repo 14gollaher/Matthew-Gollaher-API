@@ -18,6 +18,7 @@
         public static string GetAbilityFrameUrls = "dbo.AbilityFramePicture_SEL";
         public static string GetFighterIds = "dbo.FighterId_SEL";
         public static string GetCards = "dbo.Card_SEL";
+        public static string GetAbilityTypes = "dbo.AbilityType_SEL";
         #endregion
 
         #region Ability Frame Picture Table
@@ -129,7 +130,7 @@
         public static string Throw_KnockBackGrowth = "KnockBackGrowth";
         #endregion
 
-        #region Icon
+        #region Icon Table
         public static string Card_FighterId = "FighterId";
         public static string Card_Name = "Name";
         public static string Card_Title = "Title";
@@ -137,6 +138,9 @@
         public static string Card_PortraitUrl = "PortraitPictureUrl";
         #endregion
 
+        #region Ability Type Table
+        public static string AbilityType_Name = "AbilityType";
+        #endregion
 
     }
 }

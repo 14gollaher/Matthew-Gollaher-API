@@ -60,13 +60,37 @@ namespace WiiUSmash4.BusinessLogic
             return dataSet;
         }
 
-        public DataTable GetIcons()
+        public DataTable GetCards()
         {
             DataSet dataSet = new DataSet();
 
             using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
             {
                 using (var command = new SqlCommand(DatabaseDefines.GetCards, connection)
+                {
+                    CommandType = CommandType.StoredProcedure
+                })
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter
+                    {
+                        SelectCommand = command
+                    };
+
+                    connection.Open();
+                    adapter.Fill(dataSet);
+                }
+            }
+
+            return dataSet.Tables[0];
+        }
+
+        public DataTable GetAbilityTypes()
+        {
+            DataSet dataSet = new DataSet();
+
+            using (var connection = new SqlConnection(_configuration.WiiUSmash4DbConnectionString))
+            {
+                using (var command = new SqlCommand(DatabaseDefines.GetAbilityTypes, connection)
                 {
                     CommandType = CommandType.StoredProcedure
                 })

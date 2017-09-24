@@ -150,14 +150,21 @@ namespace WiiUSmash4.BusinessLogic
             throw new NotImplementedException();
         }
 
+        public IEnumerable<string> GetAbilityTypes()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Card> GetCards()
         {
             throw new NotImplementedException();
         }
+
         public void UpdateFighter(Fighter fighter)
         {
             throw new NotImplementedException();
         }
+
         public void DeleteFighter(int fighterId)
         {
             throw new NotImplementedException();
