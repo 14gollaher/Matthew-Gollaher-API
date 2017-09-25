@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -20,11 +21,14 @@ namespace Acm.BusinessLogic
         {
             Member oldMember = _context.Members.FirstOrDefault(m => m.Id == memberId);
             _context.Members.Remove(oldMember);
+            _context.SaveChanges();
         }
 
         public void EditMember(Member member)
         {
-            throw new NotImplementedException();
+            _context.Members.Add(member);
+            _context.Entry(member).State = EntityState.Modified;
+            _context.SaveChanges();
         }
 
         public Member GetMember(int memberId)

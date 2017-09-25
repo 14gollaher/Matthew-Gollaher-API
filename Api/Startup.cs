@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System;
+using TaskTime.BusinessLogic;
 using WiiUSmash4.BusinessLogic;
 
 namespace MatthewGollaher
@@ -45,6 +46,8 @@ namespace MatthewGollaher
 
             services.AddSingleton(Configuration.GetSection("Acm").Get<AcmConfiguration>());
             services.AddSingleton(Configuration.GetSection("WiiUSmash4").Get<WiiUSmash4Configuration>());
+            services.AddSingleton(Configuration.GetSection("TaskTime").Get<TaskTimeConfiguration>());
+
             services.AddDbContext<AcmContext>(o => o.UseSqlServer(Configuration["Acm:AcmDbConnectionString"]));
 
             bool mockData = Convert.ToBoolean(Configuration["Global:Mock"]);

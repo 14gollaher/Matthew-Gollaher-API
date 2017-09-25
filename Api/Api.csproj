@@ -10,6 +10,7 @@
     <None Remove="Scripts\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
@@ -21,6 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acm.BusinessLogic\Acm.BusinessLogic.csproj" />
+    <ProjectReference Include="..\TaskTime.BusinessLogic\TaskTime.BusinessLogic.csproj" />
     <ProjectReference Include="..\WiiUSmash4.BusinessLogic\WiiUSmash4.BusinessLogic.csproj" />
   </ItemGroup>
   <ItemGroup>
