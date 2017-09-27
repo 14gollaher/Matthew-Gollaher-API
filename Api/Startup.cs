@@ -1,7 +1,6 @@
 ﻿using Acm.BusinessLogic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -49,6 +48,7 @@ namespace MatthewGollaher
             services.AddSingleton(Configuration.GetSection("TaskTime").Get<TaskTimeConfiguration>());
 
             services.AddDbContext<AcmContext>(o => o.UseSqlServer(Configuration["Acm:AcmDbConnectionString"]));
+            services.AddDbContext<AcmContext>(o => o.UseSqlServer(Configuration["TaskTime:TaskTimeDbConnectionString"]));
 
             bool mockData = Convert.ToBoolean(Configuration["Global:Mock"]);
 
@@ -71,10 +71,6 @@ namespace MatthewGollaher
             app.UseDeveloperExceptionPage();
 
             app.UseCors("AllowAllHeaders");
-
-            //app.UseCors(builder =>
-            //    builder.WithOrigins(Configuration["Cors:GollaherGamesOrigin"])
-            //               .AllowAnyHeader());
 
             app.UseStatusCodePages();
 

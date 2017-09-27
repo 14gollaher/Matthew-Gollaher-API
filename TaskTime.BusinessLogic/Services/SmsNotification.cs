@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Twilio.Clients;
+﻿using Twilio.Clients;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
+
 
 namespace TaskTime.BusinessLogic
 {
@@ -18,7 +16,7 @@ namespace TaskTime.BusinessLogic
             _restClient = new TwilioRestClient(_configuration.TwilioAccountSid, _configuration.TwilioAuthToken);
         }
 
-        public async Task SendMessagesAsync(string message)
+        public async System.Threading.Tasks.Task SendMessagesAsync(string message)
         {
             await MessageResource.CreateAsync(
                 new PhoneNumber(_configuration.UserPhoneNumber),

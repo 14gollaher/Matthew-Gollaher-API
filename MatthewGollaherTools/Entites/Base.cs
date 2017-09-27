@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Acm.BusinessLogic
+namespace MatthewGollaherTools
 {
     public class Base
     {

@@ -1,6 +1,5 @@
 ﻿using MailKit.Net.Smtp;
 using MimeKit;
-using System;
 using System.Threading.Tasks;
 
 namespace TaskTime.BusinessLogic

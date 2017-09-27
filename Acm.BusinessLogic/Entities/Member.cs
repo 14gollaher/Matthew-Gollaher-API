@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatthewGollaherTools;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Acm.BusinessLogic

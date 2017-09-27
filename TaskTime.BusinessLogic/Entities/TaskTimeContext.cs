@@ -3,17 +3,17 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
-namespace Acm.BusinessLogic
+namespace TaskTime.BusinessLogic
 {
-    public class AcmContext : DbContext
+    public class TaskTimeContext : DbContext
     {
-        public AcmContext(DbContextOptions<AcmContext> options) : base(options) { }
+        public TaskTimeContext(DbContextOptions<TaskTimeContext> options) : base(options) { }
 
-        public DbSet<Member> Members { get; set; }
+        public DbSet<Task> Tasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Member>().ToTable("Member");
+            modelBuilder.Entity<Task>().ToTable("Task");
             base.OnModelCreating(modelBuilder);
         }
         public override int SaveChanges()

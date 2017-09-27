@@ -4,6 +4,8 @@ namespace TaskTime.BusinessLogic
 {
     public class TaskTimeConfiguration
     {
+        public string TaskTimeDbConnectionString { get; set; }
+
         public string UserFullName { get; set; }
         public string UserPhoneNumber { get; set; }
         public string TwilioAccountSid { get; set; }

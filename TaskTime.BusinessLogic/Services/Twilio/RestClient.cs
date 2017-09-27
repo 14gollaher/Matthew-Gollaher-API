@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System;
-using Twilio.Rest.Api.V2010.Account;
+﻿using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
 using Twilio.Clients;
 using System.Threading.Tasks;
@@ -31,14 +29,13 @@ namespace TaskTime.BusinessLogic
             _client = client;
         }
 
-        public async Task<MessageResource> SendMessage(string from, string to, string body, List<Uri> mediaUrl)
+        public async Task<MessageResource> SendMessage(string from, string to, string body)
         {
             var toPhoneNumber = new PhoneNumber(to);
             return await MessageResource.CreateAsync(
                 toPhoneNumber,
                 from: new PhoneNumber(from),
                 body: body,
-                mediaUrl: mediaUrl,
                 client: _client);
         }
     }
