@@ -19,8 +19,11 @@ namespace Api
         {
             try
             {
-                SmSNotifer notifer = new SmSNotifer(_configuration);
-                await notifer.SendMessagesAsync("Mommy is a nooooob!");
+                SmsNotification smsNotification = new SmsNotification(_configuration);
+                await smsNotification.SendMessagesAsync("Hi Kyle!");
+                EmailNotification emailNotification = new EmailNotification(_configuration);
+                emailNotification.SendEmail("Hello!");
+
                 return Ok();
             }
             catch (Exception ex)

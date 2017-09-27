@@ -7,21 +7,19 @@ using Twilio.Types;
 
 namespace TaskTime.BusinessLogic
 {
-    public class SmSNotifer
+    public class SmsNotification
     {
         private readonly ITwilioRestClient _restClient;
         private readonly TaskTimeConfiguration _configuration;
 
-        public SmSNotifer(TaskTimeConfiguration configuration)
+        public SmsNotification(TaskTimeConfiguration configuration)
         {
             _configuration = configuration;
             _restClient = new TwilioRestClient(_configuration.TwilioAccountSid, _configuration.TwilioAuthToken);
-
         }
 
         public async Task SendMessagesAsync(string message)
         {
-
             await MessageResource.CreateAsync(
                 new PhoneNumber(_configuration.UserPhoneNumber),
                 from: new PhoneNumber(_configuration.TwilioPhoneNumber),
