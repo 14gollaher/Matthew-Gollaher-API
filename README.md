@@ -9,6 +9,7 @@ My personal REST API. The application is a "Service Orientated Architecture" lik
 Data is for a friend's Android application idea. He wanted to be able to access the game's fighter data, and step-by-step moves of a given fighter and their frame data. The API calls an Azure SQL Server and Azure Blob Storage for data, and provides the data in a REST format to given urls. I am also in progress of implementing my own web applicaiton to consume this data, found here: https://github.com/14gollaher/Gollaher-Games
 
 <br/>
+<br/>
 
 <ul>
   <li>
