@@ -36,7 +36,11 @@ namespace Pongo.BusinessLogic
 
         public List<User> GetUsers()
         {
-            return _context.Users.ToList();
+            return _context.Users
+                .Include(u => u.Tables)
+                    .ThenInclude(t => t.Columns)
+                        .ThenInclude(c => c.Cells)
+                .ToList();
         }
 
         public void InsertUser(User user)

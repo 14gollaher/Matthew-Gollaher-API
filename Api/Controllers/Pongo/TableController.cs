@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Pongo.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Http;
 
 namespace Pongo
 {
@@ -19,14 +22,15 @@ namespace Pongo
         [HttpGet("Table")]
         public IActionResult GetTables()
         {
-            IEnumerable<Table> tables;
+            List<Table> tables;
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
                 tables = _tableRepository.GetTables();
             }
             catch (Exception ex)
             {
-                Debug.WriteLine(ex.ToString());
+                Console.WriteLine(ex.ToString());
                 return StatusCode(500);
             }
             return Ok(tables);
@@ -46,6 +50,23 @@ namespace Pongo
                 return StatusCode(500);
             }
             return Ok(table);
+        }
+
+        [HttpGet("Table/User/{userId}")]
+        public IActionResult GetTablesByUser(int userId)
+        {
+            List<Table> tables;
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
+            try
+            {
+                tables = _tableRepository.GetTablesByUser(userId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500);
+            }
+            return Ok(tables);
         }
 
         [HttpPost("Table")]

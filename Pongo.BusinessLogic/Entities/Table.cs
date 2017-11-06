@@ -7,8 +7,11 @@ namespace Pongo.BusinessLogic
     public class Table : Base
     {
         [Required]
-        public List<Column> Columns { get; set; }
+        [StringLength(50)]
+        public string Name { get; set; }
         [Required]
-        public List<Row> Rows { get; set; }
+        public ICollection<Column> Columns { get; set; }
+        [Required]
+        public int UserId { get; set; }
     }
 }

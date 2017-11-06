@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Pongo.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Http;
 
 namespace Pongo
 {
@@ -19,7 +22,8 @@ namespace Pongo
         [HttpGet("User")]
         public IActionResult GetUsers()
         {
-            IEnumerable<User> users;
+            List<User> users;
+            var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
                 users = _userRepository.GetUsers();

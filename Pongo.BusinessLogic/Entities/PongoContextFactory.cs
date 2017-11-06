@@ -10,9 +10,7 @@ namespace Pongo.BusinessLogic
         public PongoContext CreateDbContext(string[] args)
         {
             var builder = new DbContextOptionsBuilder<PongoContext>();
-            builder.UseSqlServer("Server=tcp:matthewgollaher.database.windows.net,1433;Initial Catalog=Pongo;Persist Security Info=False;User ID=gollaher14;Password=ABCmeow123!!!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            //builder.UseSqlServer(Configuration.PongoDbConnectionString);
-
+            builder.UseSqlServer("Secret");
             return new PongoContext(builder.Options);
         }
     }

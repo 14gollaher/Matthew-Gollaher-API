@@ -1,4 +1,5 @@
 ﻿using GlobalTools;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Pongo.BusinessLogic
@@ -20,5 +21,6 @@ namespace Pongo.BusinessLogic
         [Required]
         [MaxLength(50)]
         public string Password { get; set; }
+        public ICollection<Table> Tables { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace Pongo.BusinessLogic
 
         public void DeleteTable(int tableId)
         {
-            Table deleteTable = _context.Tables.FirstOrDefault(t => t.Id == tableId);
+            Table deleteTable = _context.Tables.FirstOrDefault(u => u.Id == tableId);
             _context.Tables.Remove(deleteTable);
             _context.SaveChanges();
         }
@@ -31,12 +31,24 @@ namespace Pongo.BusinessLogic
 
         public Table GetTable(int tableId)
         {
-            return _context.Tables.FirstOrDefault(t => t.Id == tableId);
+            return _context.Tables.FirstOrDefault(u => u.Id == tableId);
         }
 
         public List<Table> GetTables()
         {
-            return _context.Tables.ToList();
+            return _context.Tables
+                .Include(t => t.Columns)
+                     .ThenInclude(c => c.Cells)
+                .ToList();
+        }
+
+        public List<Table> GetTablesByUser(int userId)
+        {
+            return _context.Tables
+                .Where(u => u.UserId == userId)
+                .Include(t => t.Columns)
+                     .ThenInclude(c => c.Cells)
+                .ToList();
         }
 
         public void InsertTable(Table table)

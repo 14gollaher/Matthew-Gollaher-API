@@ -6,7 +6,11 @@ namespace Pongo.BusinessLogic
     public class Cell : Base
     {
         [Required]
-        [MaxLength(50)]
+        [MaxLength(8000)]
         public string Value { get; set; }
+        [Required]
+        public int Row { get; set; }
+        [Required]
+        public int ColumnId { get; set; }
     }
 }

@@ -11,9 +11,10 @@ using System;
 namespace Pongo.BusinessLogic.Migrations
 {
     [DbContext(typeof(PongoContext))]
-    partial class PongoContextModelSnapshot : ModelSnapshot
+    [Migration("20171105001013_Migration4")]
+    partial class Migration4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +26,13 @@ namespace Pongo.BusinessLogic.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ColumnId");
-
                     b.Property<DateTime>("Created");
 
                     b.Property<DateTime>("Modified");
 
-                    b.Property<int>("Row");
+                    b.Property<int?>("RowId");
+
+                    b.Property<int?>("RowId1");
 
                     b.Property<string>("Value")
                         .IsRequired()
@@ -39,9 +40,11 @@ namespace Pongo.BusinessLogic.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ColumnId");
+                    b.HasIndex("RowId");
 
-                    b.ToTable("PongoCell");
+                    b.HasIndex("RowId1");
+
+                    b.ToTable("Cells");
                 });
 
             modelBuilder.Entity("Pongo.BusinessLogic.Column", b =>
@@ -59,7 +62,9 @@ namespace Pongo.BusinessLogic.Migrations
 
                     b.Property<bool>("Required");
 
-                    b.Property<int>("TableId");
+                    b.Property<int?>("TableId");
+
+                    b.Property<int?>("TableId1");
 
                     b.Property<int>("Type");
 
@@ -67,7 +72,31 @@ namespace Pongo.BusinessLogic.Migrations
 
                     b.HasIndex("TableId");
 
-                    b.ToTable("PongoColumn");
+                    b.HasIndex("TableId1");
+
+                    b.ToTable("Columns");
+                });
+
+            modelBuilder.Entity("Pongo.BusinessLogic.Row", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Created");
+
+                    b.Property<DateTime>("Modified");
+
+                    b.Property<int?>("TableId");
+
+                    b.Property<int?>("TableId1");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TableId");
+
+                    b.HasIndex("TableId1");
+
+                    b.ToTable("Rows");
                 });
 
             modelBuilder.Entity("Pongo.BusinessLogic.Table", b =>
@@ -83,13 +112,13 @@ namespace Pongo.BusinessLogic.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PongoTable");
+                    b.ToTable("Tables");
                 });
 
             modelBuilder.Entity("Pongo.BusinessLogic.User", b =>
@@ -123,31 +152,47 @@ namespace Pongo.BusinessLogic.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PongoUser");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("Pongo.BusinessLogic.Cell", b =>
                 {
-                    b.HasOne("Pongo.BusinessLogic.Column")
+                    b.HasOne("Pongo.BusinessLogic.Row")
                         .WithMany("Cells")
-                        .HasForeignKey("ColumnId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RowId");
+
+                    b.HasOne("Pongo.BusinessLogic.Row")
+                        .WithMany()
+                        .HasForeignKey("RowId1");
                 });
 
             modelBuilder.Entity("Pongo.BusinessLogic.Column", b =>
                 {
                     b.HasOne("Pongo.BusinessLogic.Table")
                         .WithMany("Columns")
-                        .HasForeignKey("TableId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("TableId");
+
+                    b.HasOne("Pongo.BusinessLogic.Table")
+                        .WithMany()
+                        .HasForeignKey("TableId1");
+                });
+
+            modelBuilder.Entity("Pongo.BusinessLogic.Row", b =>
+                {
+                    b.HasOne("Pongo.BusinessLogic.Table")
+                        .WithMany("Rows")
+                        .HasForeignKey("TableId");
+
+                    b.HasOne("Pongo.BusinessLogic.Table")
+                        .WithMany()
+                        .HasForeignKey("TableId1");
                 });
 
             modelBuilder.Entity("Pongo.BusinessLogic.Table", b =>
                 {
                     b.HasOne("Pongo.BusinessLogic.User")
-                        .WithMany("Tables")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

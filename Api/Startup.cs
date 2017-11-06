@@ -56,7 +56,6 @@ namespace MatthewGollaher
             if (mockData)
             {
                 services.AddScoped<IFighterRepository, MockFighterRepository>();
-                services.AddScoped<ITableRepository, MockTableRepository>();
             }
             else
             {

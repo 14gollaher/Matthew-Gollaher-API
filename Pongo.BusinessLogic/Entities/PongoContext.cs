@@ -9,18 +9,18 @@ namespace Pongo.BusinessLogic
     {
         public PongoContext(DbContextOptions<PongoContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Row> Rows { get; set; }
+        public DbSet<Cell> Cells { get; set; }
         public DbSet<Column> Columns { get; set; }
         public DbSet<Table> Tables { get; set; }
-
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().ToTable("User");
-            modelBuilder.Entity<Row>().ToTable("Row");
-            modelBuilder.Entity<Column>().ToTable("Column");
-            modelBuilder.Entity<Table>().ToTable("Table");
+            modelBuilder.Entity<Cell>().ToTable("PongoCell");
+            modelBuilder.Entity<Column>().ToTable("PongoColumn");
+            modelBuilder.Entity<Table>().ToTable("PongoTable");
+            modelBuilder.Entity<User>().ToTable("PongoUser");
+
             base.OnModelCreating(modelBuilder);
         }
         public override int SaveChanges()
