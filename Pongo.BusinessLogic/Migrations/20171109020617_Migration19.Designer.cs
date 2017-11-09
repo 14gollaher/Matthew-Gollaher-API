@@ -11,9 +11,10 @@ using System;
 namespace Pongo.BusinessLogic.Migrations
 {
     [DbContext(typeof(PongoContext))]
-    partial class PongoContextModelSnapshot : ModelSnapshot
+    [Migration("20171109020617_Migration19")]
+    partial class Migration19
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -19,6 +19,9 @@ namespace Pongo.BusinessLogic
         [MaxLength(50)]
         public string UserName { get; set; }
         [Required]
+        public bool Registered { get; set; }
+        [Required]
+        public bool EmailList { get; set; }
         [MaxLength(50)]
         public string Password { get; set; }
         public ICollection<Table> Tables { get; set; }

@@ -9,78 +9,78 @@ using System.Net.Http;
 namespace Pongo
 {
     [Route("Pongo")]
-    public class TableController : Controller
+    public class CellController : Controller
     {
-        private ITableRepository _tableRepository;
+        private ICellRepository _cellRepository;
 
-        public TableController(ITableRepository tableRepository)
+        public CellController(ICellRepository cellRepository)
         {
-            _tableRepository = tableRepository;
+            _cellRepository = cellRepository;
         }
 
-        [HttpGet("Table")]
-        public IActionResult GetTables()
+        [HttpGet("Cell")]
+        public IActionResult GetCells()
         {
-            List<Table> tables;
+            List<Cell> cells;
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                tables = _tableRepository.GetTables();
+                cells = _cellRepository.GetCells();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 return StatusCode(500);
             }
-            return Ok(tables);
+            return Ok(cells);
         }
 
-        [HttpGet("Table/{tableId}")]
-        public IActionResult GetTable(int tableId)
+        [HttpGet("Cell/{cellId}")]
+        public IActionResult GetCell(int cellId)
         {
-            Table table = new Table();
+            Cell cell = new Cell();
             try
             {
-                table = _tableRepository.GetTable(tableId);
+                cell = _cellRepository.GetCell(cellId);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
                 return StatusCode(500);
             }
-            return Ok(table);
+            return Ok(cell);
         }
 
-        [HttpGet("User/{userId}/Table")]
-        public IActionResult GetTablesByUser(int userId)
+        [HttpGet("Column/Cell/{cellId}")]
+        public IActionResult GetCellsByColumn(int columnId)
         {
-            List<Table> tables;
+            List<Cell> cells;
             var response = new HttpResponseMessage(HttpStatusCode.OK);
             try
             {
-                tables = _tableRepository.GetTablesByUser(userId);
+                cells = _cellRepository.GetCellsByColumn(columnId);
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
                 return StatusCode(500);
             }
-            return Ok(tables);
+            return Ok(cells);
         }
 
-        [HttpPost("Table")]
-        public IActionResult InsertTable([FromBody] Table table)
+        [HttpPost("Cell")]
+        public IActionResult InsertCell([FromBody] Cell cell)
         {
             try
             {
-                _tableRepository.InsertTable(table);
+                _cellRepository.InsertCell(cell);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.ToString());
                 return StatusCode(500);
             }
-            return Ok(table);
+            return Ok(cell);
         }
     }
 }

@@ -13,8 +13,8 @@ namespace Pongo.BusinessLogic
         public ColumnType Type { get; set; }
         [Required]
         public bool Required { get; set; }
-        //[Required]
-        //public int ColumnOrder { get; set; }
+        [Required]
+        public int ColumnOrder { get; set; }
         [Required]
         public ICollection<Cell> Cells { get; set; }
         [Required]
